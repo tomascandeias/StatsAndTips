@@ -4,15 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".MainActivity">
 
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_width="168dp"
+        android:layout_height="27dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/ic_action_username"
+        android:inputType="textPersonName"
+        android:text="Username"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <TextView
+        android:layout_width="168dp"
+        android:layout_height="27dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/ic_action_pass"
+        android:inputType="textPassword"
+        android:text="Password"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="121dp"
+        android:layout_height="133dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="197dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Login"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="454dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register here"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="531dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
