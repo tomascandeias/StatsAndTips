@@ -1,17 +1,26 @@
 package ihc.p7.statstips.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 
+import ihc.p7.statstips.HomePage;
+import ihc.p7.statstips.Login;
 import ihc.p7.statstips.R;
 
 /**
@@ -33,7 +42,10 @@ public class AccountFragment extends Fragment {
     ListView simpleList;
     String itemList[] = {"Name", "Age", "E-mail", "Favourite Teams"};
 
-
+    Button b1, b2, b3;
+    TextView t1,t2,t3;
+    TextInputEditText et1,et2,et3;
+    View fragmentView;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -67,10 +79,93 @@ public class AccountFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        b1 = (Button) view.findViewById(R.id.btnEditInfo);
+        b2 = (Button) view.findViewById(R.id.btnSaveChanges);
+        b3 = (Button) view.findViewById(R.id.btnDiscardChanges);
+
+        t1 = (TextView) view.findViewById(R.id.textViewName);
+        t2 = (TextView) view.findViewById(R.id.textViewEmail);
+        t3 = (TextView) view.findViewById(R.id.textViewFavourite);
+
+        et1 = (TextInputEditText) view.findViewById(R.id.editTextViewName);
+        et2 = (TextInputEditText) view.findViewById(R.id.editTextViewEmail);
+        et3 = (TextInputEditText) view.findViewById(R.id.editTextViewFavourite);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        this.fragmentView = view;
+
+        b1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                b1Clicked(v);
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                b2Clicked(v);
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                b3Clicked(v);
+            }
+        });
+    }
+
+    // Function that allows you to change your profile info
+    public void b1Clicked(View view){
+        b1.setVisibility(view.GONE);
+        b2.setVisibility(view.VISIBLE);
+        b3.setVisibility(view.VISIBLE);
+        t1.setVisibility(view.GONE);
+        t2.setVisibility(view.GONE);
+        t3.setVisibility(view.GONE);
+        et1.setVisibility(view.VISIBLE);
+        et2.setVisibility(view.VISIBLE);
+        et3.setVisibility(view.VISIBLE);
+    }
+
+    public void b2Clicked(View view){
+        b1.setVisibility(view.VISIBLE);
+        b2.setVisibility(view.GONE);
+        b3.setVisibility(view.GONE);
+        t1.setVisibility(view.VISIBLE);
+        t2.setVisibility(view.VISIBLE);
+        t3.setVisibility(view.VISIBLE);
+        et1.setVisibility(view.GONE);
+        if (et1.getText().toString().length()>0) t1.setText(et1.getText().toString());
+        et2.setVisibility(view.GONE);
+        if (et2.getText().toString().length()>0) t2.setText(et2.getText().toString());
+        et3.setVisibility(view.GONE);
+        if (et3.getText().toString().length()>0) t3.setText(et3.getText().toString());
+    }
+
+    //Function to discard all changes made to the profile
+    public void b3Clicked(View view){
+        b1.setVisibility(view.VISIBLE);
+        b2.setVisibility(view.GONE);
+        b3.setVisibility(view.GONE);
+        t1.setVisibility(view.VISIBLE);
+        t2.setVisibility(view.VISIBLE);
+        t3.setVisibility(view.VISIBLE);
+        et1.setVisibility(view.GONE);
+        et2.setVisibility(view.GONE);
+        et3.setVisibility(view.GONE);
     }
 }
