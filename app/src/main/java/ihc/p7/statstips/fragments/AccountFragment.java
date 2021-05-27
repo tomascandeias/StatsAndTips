@@ -129,6 +129,7 @@ public class AccountFragment extends Fragment {
     }
 
     // Function that allows you to change your profile info
+    // It is called when se click on edit info btn
     public void b1Clicked(View view){
         b1.setVisibility(view.GONE);
         b2.setVisibility(view.VISIBLE);
@@ -141,6 +142,8 @@ public class AccountFragment extends Fragment {
         et3.setVisibility(view.VISIBLE);
     }
 
+    //Function to save all changes made to the profile
+    // It is called when se click on save changes btn
     public void b2Clicked(View view){
         b1.setVisibility(view.VISIBLE);
         b2.setVisibility(view.GONE);
@@ -157,6 +160,7 @@ public class AccountFragment extends Fragment {
     }
 
     //Function to discard all changes made to the profile
+    // It is called when se click on discard btn
     public void b3Clicked(View view){
         b1.setVisibility(view.VISIBLE);
         b2.setVisibility(view.GONE);
