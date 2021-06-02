@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ihc.p7.statstips.R;
@@ -68,11 +69,13 @@ public class GuideFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_guide, container, false);
 
-        int widthPixels = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int heightPixels = Resources.getSystem().getDisplayMetrics().heightPixels;
-
         ImageView howoddswork = view.findViewById(R.id.howoddswork);
+        final LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) howoddswork.getLayoutParams();
+        layoutParams.setMargins(0, 20, 0, 0);
+
         ImageView decimalodds = view.findViewById(R.id.decimalodds);
+        final LinearLayout.LayoutParams layoutParams2 = (LinearLayout.LayoutParams) decimalodds.getLayoutParams();
+        layoutParams2.setMargins(0, 20, 0, 0);
 
         return view;
     }

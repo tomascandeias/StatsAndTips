@@ -23,12 +23,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        txtEmail = (TextInputEditText) findViewById(R.id.textInputEditText);
-        txtPass = (EditText) findViewById(R.id.editTextNumberPassword);
+        txtEmail = findViewById(R.id.textInputEditText);
+        txtPass = findViewById(R.id.editTextNumberPassword);
 
 
 
-        btn_login = (Button) findViewById(R.id.btnLogin);
+        btn_login = findViewById(R.id.btnLogin);
         btn_login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-        txt_loginGuest = (TextView) findViewById(R.id.textLoginGuest);
+        txt_loginGuest = findViewById(R.id.textLoginGuest);
         txt_loginGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

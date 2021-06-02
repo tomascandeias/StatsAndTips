@@ -67,13 +67,13 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/howoddswork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitStart"
-                android:paddingBottom="0px"
-                android:src="@drawable/howoddswork"/>
+                <ImageView
+                    android:id="@+id/howoddswork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="249dp"
+                    android:paddingBottom="0px"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/howoddswork" />
 
             <TextView
                 android:id="@+id/odds2"
@@ -85,13 +85,14 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/decimalodds"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="0px"
-                android:scaleType="fitStart"
-                android:src="@drawable/decimalodds"/>
+                <ImageView
+                    android:id="@+id/decimalodds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="212dp"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="0px"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/decimalodds" />
 
             <!--TIPS-->
             <TextView
