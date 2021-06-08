@@ -42,12 +42,14 @@ CREATE TABLE SAT.Odd (
   PRIMARY KEY (id_odd));
 
 CREATE TABLE SAT.Registo (
-  nome        varchar(10) NULL, 
+  nome        varchar(10) NOT NULL, 
   nfaltas     int NULL, 
   namarelos   int NULL, 
   ncantos     int NULL, 
   ngolos      int NULL, 
-  Jogoid_jogo varchar(10) NOT NULL);
+  Jogoid_jogo varchar(10) NOT NULL,
+  Arbitroid_arbitro varchar(10) NOT NULL,
+  PRIMARY KEY (nome));
 
 CREATE TABLE SAT.Clube (
   id_clube      varchar(10) NULL, 
@@ -99,18 +101,18 @@ CREATE TABLE SAT.Jogo (
 
 ALTER TABLE SAT.Jogador ADD CONSTRAINT Constitui FOREIGN KEY (Equipaid) REFERENCES Equipa (id_equipa);
 
-ALTER TABLE Equipa ADD CONSTRAINT FKEquipa401218 FOREIGN KEY () REFERENCES Clube ();
+ALTER TABLE Equipa ADD CONSTRAINT FKEquipa401218 FOREIGN KEY (Clubeid_clube) REFERENCES Clube (id_clube);
 
 ALTER TABLE Equipa_Competicao ADD CONSTRAINT FKEquipa_Com999010 FOREIGN KEY (Equipaid_equipa) REFERENCES Equipa (id_equipa);
 ALTER TABLE Equipa_Competicao ADD CONSTRAINT FKEquipa_Com810297 FOREIGN KEY (Competicaoid) REFERENCES Competicao (id_competicao);
 
 ALTER TABLE Odd ADD CONSTRAINT FKOdd956964 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SeletorOdd (id_seletor);
 
-ALTER TABLE Admin ADD CONSTRAINT FKAdmin919941 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SeletorOdd (id_seletor);
+ALTER TABLE Administrador ADD CONSTRAINT FKAdmin919941 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SeletorOdd (id_seletor);
 
 ALTER TABLE CasaDeApostas ADD CONSTRAINT FKCasaDeApos51658 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SeletorOdd (id_seletor);
 
-ALTER TABLE Registo ADD CONSTRAINT FKRegisto532354 FOREIGN KEY () REFERENCES Arbitro ();
+ALTER TABLE Registo ADD CONSTRAINT FKRegisto532354 FOREIGN KEY (Arbitroid_arbitro) REFERENCES Arbitro (id_arbitro);
 ALTER TABLE Registo ADD CONSTRAINT FKRegisto787259 FOREIGN KEY (Jogoid_jogo) REFERENCES Jogo (id_jogo);
 
 ALTER TABLE Jogo ADD CONSTRAINT FKJogo557265 FOREIGN KEY (Competicaoid) REFERENCES Competicao (id_competicao);

@@ -10,7 +10,7 @@ public class HandlerDB {
 	private String password = "";
 	private Connection conn = null;
 
-	public HandlerDB(String db_url, String username, String password, Connection conn) {
+	public HandlerDB(String db_url, String username, String password) {
 		this.db_url = db_url;
 		this.username = username;
 		this.password = password;
