@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LeaguesFragment">
+    tools:context=".Leagues">
 
     <RelativeLayout
+        android:id="@+id/leagues"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient">
@@ -15,11 +16,11 @@
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="49dp"
-            android:textSize="26dp"
-            android:textAlignment="center"
-            android:text="LEAGUE TABLE &amp; STANDINGS"
             android:background="@color/white"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:text="LEAGUE TABLE &amp; STANDINGS"
+            android:textAlignment="center"
+            android:textSize="26dp" />
 
         <ImageView
             android:layout_width="30dp"
@@ -45,11 +46,11 @@
             android:layout_marginTop="109dp"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:scaleType="fitCenter"
-            android:paddingLeft="10dp"
             android:background="@drawable/rounded_corners"
+            android:paddingLeft="10dp"
+            android:scaleType="fitCenter"
             android:text="Liga Portuguesa"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <ImageView
             android:layout_width="30dp"
@@ -75,11 +76,11 @@
             android:layout_marginTop="169dp"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:scaleType="fitCenter"
-            android:paddingLeft="10dp"
             android:background="@drawable/rounded_corners"
+            android:paddingLeft="10dp"
+            android:scaleType="fitCenter"
             android:text="Premier League"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <ImageView
             android:layout_width="30dp"
@@ -105,11 +106,11 @@
             android:layout_marginTop="229dp"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/rounded_corners"
+            android:paddingLeft="10dp"
             android:scaleType="fitCenter"
             android:text="Bundesliga"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <ImageView
             android:layout_width="30dp"
@@ -135,11 +136,11 @@
             android:layout_marginTop="289dp"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/rounded_corners"
+            android:paddingLeft="10dp"
             android:scaleType="fitCenter"
             android:text="Serie A"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <ImageView
             android:layout_width="30dp"
@@ -165,11 +166,11 @@
             android:layout_marginTop="349dp"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/rounded_corners"
+            android:paddingLeft="10dp"
             android:scaleType="fitCenter"
             android:text="La Liga"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <ImageView
             android:layout_width="30dp"
@@ -195,11 +196,11 @@
             android:layout_marginTop="409dp"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/rounded_corners"
+            android:paddingLeft="10dp"
             android:scaleType="fitCenter"
             android:text="Ligue 1"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 </FrameLayout>

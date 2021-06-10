@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StandingPTFragment#newInstance} factory method to
+ * Use the {@link Standing#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StandingPTFragment extends Fragment {
+public class Standing extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class StandingPTFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StandingPTFragment() {
+    public Standing() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class StandingPTFragment extends Fragment {
      * @return A new instance of fragment StandingPTFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StandingPTFragment newInstance(String param1, String param2) {
-        StandingPTFragment fragment = new StandingPTFragment();
+    public static Standing newInstance(String param1, String param2) {
+        Standing fragment = new Standing();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

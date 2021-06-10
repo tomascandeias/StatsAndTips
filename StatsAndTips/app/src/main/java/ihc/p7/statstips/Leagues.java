@@ -1,4 +1,4 @@
-package ihc.p7.statstips.fragments;
+package ihc.p7.statstips;
 
 import android.os.Bundle;
 
@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ihc.p7.statstips.R;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LeaguesFragment#newInstance} factory method to
+ * Use the {@link Leagues#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LeaguesFragment extends Fragment {
+public class Leagues extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +24,7 @@ public class LeaguesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LeaguesFragment() {
+    public Leagues() {
         // Required empty public constructor
     }
 
@@ -39,8 +37,8 @@ public class LeaguesFragment extends Fragment {
      * @return A new instance of fragment EventFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LeaguesFragment newInstance(String param1, String param2) {
-        LeaguesFragment fragment = new LeaguesFragment();
+    public static Leagues newInstance(String param1, String param2) {
+        Leagues fragment = new Leagues();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

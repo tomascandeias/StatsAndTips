@@ -15,7 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class Login extends AppCompatActivity {
     private Button btn_login;
     private TextView txt_loginGuest;
-    private TextInputEditText txtEmail;
+    private EditText txtEmail;
     private EditText txtPass;
 
     @Override
@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        txtEmail = findViewById(R.id.textInputEditText);
+        txtEmail = findViewById(R.id.textInputEmail);
         txtPass = findViewById(R.id.editTextNumberPassword);
 
 
@@ -41,10 +41,10 @@ public class Login extends AppCompatActivity {
                         startActivity(new Intent(Login.this, HomePage.class));
                     else if (email.length() < 8 && pass.length() > 3)
                         Toast.makeText(Login.this, "You did not enter a valid Email", Toast.LENGTH_SHORT).show();
-                    else if (email.length() > 7 && pass.length() < 4)
+                    else if (email.length() > 7)
                         Toast.makeText(Login.this, "You did not enter a valid Password", Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(Login.this, "Please enter a valid email and password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Please enter a valid email and/or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
