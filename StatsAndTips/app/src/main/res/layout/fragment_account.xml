@@ -53,6 +53,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
+            android:inputType="textPersonName"
             android:layout_marginStart="67dp"
             android:layout_marginLeft="67dp"
             android:layout_marginBottom="370dp"
@@ -82,6 +83,7 @@
             android:id="@+id/editTextViewEmail"
             android:layout_width="276dp"
             android:layout_height="41dp"
+            android:inputType="textEmailAddress"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
@@ -95,8 +97,8 @@
             android:textSize="20sp"
             android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/textViewFavourite"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="276dp"
             android:layout_height="31dp"
             android:layout_alignParentStart="true"
@@ -106,7 +108,6 @@
             android:layout_marginLeft="64dp"
             android:layout_marginBottom="244dp"
             android:drawableLeft="@android:drawable/btn_star_big_on"
-            android:text="Sport Lisboa e Benfica"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -177,6 +178,7 @@
             android:textColor="#FFFFFF"
             android:onClick="b3Clicked"
             android:visibility="gone"/>
+
 
     </RelativeLayout>
 

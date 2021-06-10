@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -41,6 +42,8 @@ public class AccountFragment extends Fragment {
 
     ListView simpleList;
     String itemList[] = {"Name", "Age", "E-mail", "Favourite Teams"};
+
+    Spinner dropdown;
 
     Button b1, b2, b3;
     TextView t1,t2,t3;
@@ -93,11 +96,14 @@ public class AccountFragment extends Fragment {
 
         t1 = (TextView) view.findViewById(R.id.textViewName);
         t2 = (TextView) view.findViewById(R.id.textViewEmail);
-        t3 = (TextView) view.findViewById(R.id.textViewFavourite);
+
 
         et1 = (TextInputEditText) view.findViewById(R.id.editTextViewName);
         et2 = (TextInputEditText) view.findViewById(R.id.editTextViewEmail);
         et3 = (TextInputEditText) view.findViewById(R.id.editTextViewFavourite);
+
+        dropdown = (Spinner) view.findViewById(R.id.spinner);
+        initspinnerfooter();
 
         return view;
     }
@@ -126,6 +132,16 @@ public class AccountFragment extends Fragment {
                 b3Clicked(v);
             }
         });
+    }
+
+    private void initspinnerfooter() {
+        String[] items = new String[]{
+                "Choose apple", "Choose boy", " Choose cat", "Choose dog",
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, items);
+        dropdown.setAdapter(adapter);
+
     }
 
     // Function that allows you to change your profile info
