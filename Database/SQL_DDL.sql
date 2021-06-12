@@ -11,7 +11,7 @@ CREATE TABLE SAT.Equipa (
 
 CREATE TABLE SAT.Jogador (
   Equipaid      varchar(10) NOT NULL, 
-  id_jogador    int IDENTITY NOT NULL, 
+  id_jogador    varchar(10) IDENTITY NOT NULL, 
   nome          varchar(10) NULL, 
   amarelos      int NULL, 
   vermelhos     int NULL, 
@@ -28,7 +28,7 @@ CREATE TABLE SAT.Competicao (
   PRIMARY KEY (id_competicao));
 
 CREATE TABLE SAT.Odd (
-  id_odd               int IDENTITY NOT NULL, 
+  id_odd               varchar(10) IDENTITY NOT NULL, 
   vitoria              int NULL, 
   empate               int NULL, 
   derrota              int NULL, 
@@ -91,6 +91,11 @@ CREATE TABLE SAT.Taca (
   Competicaoid_competicao int NOT NULL,
   PRIMARY KEY(Competicaoid_competicao));
 
+
+CREATE TABLE Jogador_Jogo(
+  Jogadorid_jogador varchar(10) NULL,
+  Jogoid_jogo       varchar(10) NULL);
+
 CREATE TABLE SAT.Jogo (
   localizacao            int NULL, 
   data_hora             varchar(10) NULL, 
@@ -107,6 +112,9 @@ ALTER TABLE SAT.Equipa ADD CONSTRAINT FKEquipa401218 FOREIGN KEY (Clubeid_clube)
 
 ALTER TABLE SAT.Equipa_Competicao ADD CONSTRAINT FKEquipa_Com999010 FOREIGN KEY (Equipaid_equipa) REFERENCES SAT.Equipa (id_equipa);
 ALTER TABLE SAT.Equipa_Competicao ADD CONSTRAINT FKEquipa_Com810297 FOREIGN KEY (Competicaoid) REFERENCES SAT.Competicao (id_competicao);
+
+ALTER TABLE SAT.Jogador_Jogo ADD CONSTRAINT FKJogador_Jogo1 FOREIGN KEY (Jogadorid_jogador) REFERENCES SAT.Jogador (id_jogador);
+ALTER TABLE SAT.Jogador_Jogo ADD CONSTRAINT FKJogador_Jogo2 FOREIGN KEY (Jogoid_jogo) REFERENCES SAT.Jogo (id_jogo);
 
 ALTER TABLE SAT.Odd ADD CONSTRAINT FKOdd956964 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SAT.SeletorOdd (id_seletor);
 
