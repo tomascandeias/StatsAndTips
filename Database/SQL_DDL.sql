@@ -17,8 +17,7 @@ CREATE TABLE SAT.Jogador (
   vermelhos     int NULL, 
   njogos        int NULL, 
   nacionalidade varchar(10) NULL, 
-  posicao       int NULL, 
-  Jogocodigo    varchar(10) NOT NULL, 
+  posicao       int NULL,
   Jogoid_jogo   varchar(10) NOT NULL, 
   PRIMARY KEY (id_jogador));
 
@@ -94,11 +93,10 @@ CREATE TABLE SAT.Taca (
   PRIMARY KEY(Competicaoid_competicao));
 
 CREATE TABLE SAT.Jogo (
-  local            int NULL, 
-  data             varchar(10) NULL, 
+  localizacao            int NULL, 
+  data_hora             varchar(10) NULL, 
   id_jogo          varchar(10) NOT NULL, 
   resultado        varchar(10) NULL, 
-  idCompeticao     int NOT NULL, 
   Admincodigo      int NOT NULL, 
   Competicaoid     int NOT NULL, 
   Equipaid_equipa  varchar(10) NOT NULL, 
