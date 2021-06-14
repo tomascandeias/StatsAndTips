@@ -34,8 +34,10 @@
             tools:src="@drawable/portugal" />
 
         <TextView
+            android:id="@+id/ptLeague"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
+            android:clickable="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"

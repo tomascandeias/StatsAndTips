@@ -149,7 +149,7 @@ public class AccountFragment extends Fragment {
 
     private void initspinnerfooter() {
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_selected_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_selected_items, items);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_items);
 
         dropdown.setAdapter(adapter);

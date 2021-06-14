@@ -55,7 +55,7 @@
                         android:text="#" />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Team" />
@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="left"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="Points" />
 
                 </TableRow>
@@ -93,7 +93,7 @@
                         android:text="1." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Atlético de Madrid" />
@@ -129,7 +129,7 @@
                         android:text="2." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Real Madrid" />
@@ -165,7 +165,7 @@
                         android:text="3." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Barcelona" />
@@ -201,7 +201,7 @@
                         android:text="4." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Sevilla" />
@@ -237,7 +237,7 @@
                         android:text="5." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Real Sociedad" />
@@ -273,7 +273,7 @@
                         android:text="6." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Betis" />
@@ -309,7 +309,7 @@
                         android:text="7." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Villareal" />
@@ -345,7 +345,7 @@
                         android:text="8." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Celta Vigo" />
@@ -381,7 +381,7 @@
                         android:text="9." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Granada" />
@@ -417,7 +417,7 @@
                         android:text="10." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Athletic Bilbau" />
@@ -453,7 +453,7 @@
                         android:text="11." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Osasuna" />
@@ -489,7 +489,7 @@
                         android:text="12." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Cadiz" />
@@ -525,7 +525,7 @@
                         android:text="13." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Valencia" />
@@ -561,7 +561,7 @@
                         android:text="14." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Levante" />
@@ -597,7 +597,7 @@
                         android:text="15." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Getafe" />
@@ -633,7 +633,7 @@
                         android:text="16." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Alaves" />
@@ -669,7 +669,7 @@
                         android:text="17." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Elche" />
@@ -707,7 +707,7 @@
                         android:text="18." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Huesca" />
@@ -745,7 +745,7 @@
                         android:text="19." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Valladolid" />
@@ -784,7 +784,7 @@
                         android:text="20." />
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Eibar" />
@@ -823,7 +823,7 @@
                         ></TextView>
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:text="Equipa que está zona de campeão"
@@ -840,7 +840,7 @@
                         ></TextView>
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:text="Equipas que estão na zona de despromoção"
@@ -858,7 +858,7 @@
                         ></TextView>
 
                     <TextView
-                        android:layout_width="247dp"
+                        android:layout_width="225dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:text="Se as equipas terminarem em igualdade pontual no final da temporada, o desempate é feito tendo em conta o resultado direto entre as equipas empatadas"
