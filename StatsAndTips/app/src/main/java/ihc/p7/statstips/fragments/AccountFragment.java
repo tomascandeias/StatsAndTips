@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ihc.p7.statstips.HomePage;
@@ -44,6 +45,13 @@ public class AccountFragment extends Fragment {
     String itemList[] = {"Name", "Age", "E-mail", "Favourite Teams"};
 
     Spinner dropdown;
+
+    List<String> items = new ArrayList<String>();
+
+
+/*String[] items = new String[]{
+        "FC Porto", "Portugal", "Beira-Mar", "Manchester United",
+};*/
 
     Button b1, b2, b3;
     TextView t1,t2,t3;
@@ -96,11 +104,16 @@ public class AccountFragment extends Fragment {
 
         t1 = (TextView) view.findViewById(R.id.textViewName);
         t2 = (TextView) view.findViewById(R.id.textViewEmail);
+        t3 = (TextView) view.findViewById(R.id.textFavTeam);
 
 
         et1 = (TextInputEditText) view.findViewById(R.id.editTextViewName);
         et2 = (TextInputEditText) view.findViewById(R.id.editTextViewEmail);
         et3 = (TextInputEditText) view.findViewById(R.id.editTextViewFavourite);
+
+        items.add("FC Porto");
+        items.add("Portugal");
+        items.add("Beira-Mar");
 
         dropdown = (Spinner) view.findViewById(R.id.spinner);
         initspinnerfooter();
@@ -135,11 +148,10 @@ public class AccountFragment extends Fragment {
     }
 
     private void initspinnerfooter() {
-        String[] items = new String[]{
-                "Choose apple", "Choose boy", " Choose cat", "Choose dog",
-        };
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_selected_item, items);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_items);
+
         dropdown.setAdapter(adapter);
 
     }
@@ -156,6 +168,7 @@ public class AccountFragment extends Fragment {
         et1.setVisibility(view.VISIBLE);
         et2.setVisibility(view.VISIBLE);
         et3.setVisibility(view.VISIBLE);
+        dropdown.setVisibility(view.GONE);
     }
 
     //Function to save all changes made to the profile
@@ -172,7 +185,12 @@ public class AccountFragment extends Fragment {
         et2.setVisibility(view.GONE);
         if (et2.getText().toString().length()>0) t2.setText(et2.getText().toString());
         et3.setVisibility(view.GONE);
-        if (et3.getText().toString().length()>0) t3.setText(et3.getText().toString());
+        if (et3.getText().toString().length()>0) {
+
+            items.add(et3.getText().toString());
+
+        }
+        dropdown.setVisibility(view.VISIBLE);
     }
 
     //Function to discard all changes made to the profile
@@ -187,5 +205,6 @@ public class AccountFragment extends Fragment {
         et1.setVisibility(view.GONE);
         et2.setVisibility(view.GONE);
         et3.setVisibility(view.GONE);
+        dropdown.setVisibility(view.VISIBLE);
     }
 }
