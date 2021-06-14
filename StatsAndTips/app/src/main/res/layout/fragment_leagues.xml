@@ -35,9 +35,9 @@
 
         <TextView
             android:id="@+id/ptLeague"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:clickable="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -66,6 +66,8 @@
             tools:src="@drawable/inglaterra" />
 
         <TextView
+            android:id="@+id/enLeague"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -96,6 +98,8 @@
             tools:src="@drawable/germany" />
 
         <TextView
+            android:id="@+id/gerLeague"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -126,6 +130,8 @@
             tools:src="@drawable/italy" />
 
         <TextView
+            android:id="@+id/itLeague"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -156,6 +162,8 @@
             tools:src="@drawable/spain" />
 
         <TextView
+            android:id="@+id/esLeague"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -186,6 +194,8 @@
             tools:src="@drawable/france" />
 
         <TextView
+            android:id="@+id/frLeague"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"

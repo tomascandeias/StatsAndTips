@@ -30,7 +30,7 @@ public class Leagues extends Fragment {
     private String mParam2;
 
     View fragmentView;
-    TextView tvPT;
+    TextView tvPT, tvIT, tvGER, tvEN, tvES, tvFR;
 
     public Leagues() {
         // Required empty public constructor
@@ -70,6 +70,11 @@ public class Leagues extends Fragment {
         View view = inflater.inflate(R.layout.fragment_leagues, container, false);
 
         tvPT = (TextView) view.findViewById(R.id.ptLeague);
+        tvES = (TextView) view.findViewById(R.id.esLeague);
+        tvEN = (TextView) view.findViewById(R.id.enLeague);
+        tvFR = (TextView) view.findViewById(R.id.frLeague);
+        tvIT = (TextView) view.findViewById(R.id.itLeague);
+        tvGER = (TextView) view.findViewById(R.id.gerLeague);
 
         return view;
     }
@@ -83,16 +88,86 @@ public class Leagues extends Fragment {
         tvPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                t1Clicked(v);
+                tvPTClicked(v);
+            }
+        });
+        tvES.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvESClicked(v);
+            }
+        });
+        tvEN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvENClicked(v);
+            }
+        });
+        tvIT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvITClicked(v);
+            }
+        });
+        tvFR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvFRClicked(v);
+            }
+        });
+        tvGER.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvGERClicked(v);
             }
         });
     }
 
-    public void t1Clicked(View view) {
+    public void tvPTClicked(View view) {
         StandingPT fragmentPT = new StandingPT();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fl_navbar, fragmentPT);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    public void tvITClicked(View view) {
+        StandingIT fragmentIT = new StandingIT();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fl_navbar, fragmentIT);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    public void tvESClicked(View view) {
+        StandingES fragmentES = new StandingES();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fl_navbar, fragmentES);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    public void tvENClicked(View view) {
+        StandingEN fragmentEN = new StandingEN();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fl_navbar, fragmentEN);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    public void tvFRClicked(View view) {
+        StandingFR fragmentFR = new StandingFR();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fl_navbar, fragmentFR);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    public void tvGERClicked(View view) {
+        StandingGER fragmentGER = new StandingGER();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fl_navbar, fragmentGER);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
