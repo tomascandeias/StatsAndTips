@@ -83,10 +83,10 @@
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/rounded_corners_champ"
                     android:minHeight="80px">
 
                     <TextView
+                        android:background="@drawable/rounded_corners_champ"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"

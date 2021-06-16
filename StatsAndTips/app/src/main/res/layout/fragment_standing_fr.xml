@@ -77,16 +77,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="left"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="5dp"
                         android:text="Points" />
 
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/rounded_corners_champ"
                     android:minHeight="80px">
 
                     <TextView
+                        android:background="@drawable/rounded_corners_champ"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
@@ -734,10 +734,10 @@
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/rounded_corners_relegated"
                     android:minHeight="80px">
 
                     <TextView
+                        android:background="@drawable/rounded_corners_relegated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
@@ -773,10 +773,10 @@
 
                 <TableRow
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_corners_relegated"
                     android:minHeight="80px">
 
                     <TextView
+                        android:background="@drawable/rounded_corners_relegated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
