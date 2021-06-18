@@ -44,8 +44,10 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "You did not agree with terms of service", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    if (email.length() > 7 && pass.length() > 3)
+                    if (email.length() > 7 && pass.length() > 3){
                         startActivity(new Intent(Register.this, HomePage.class));
+                        sendMail(email);
+                    }
                     else if (email.length() < 8 && pass.length() > 3)
                         Toast.makeText(Register.this, "You did not enter a valid Email", Toast.LENGTH_SHORT).show();
                     else if (email.length() > 7)
@@ -62,5 +64,15 @@ public class Register extends AppCompatActivity {
                 startActivity(new Intent(Register.this, Login.class));
             }
         });
+    }
+
+    private void sendMail(String mail) {
+        String msg = "Conta criada com sucesso!!";
+        String subject = "StatsAndTips";
+
+        //Send Email
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, mail.trim(), subject.trim(), msg);
+
+        javaMailAPI.execute();
     }
 }
