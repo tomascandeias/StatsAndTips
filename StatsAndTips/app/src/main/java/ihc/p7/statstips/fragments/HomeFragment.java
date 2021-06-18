@@ -32,9 +32,6 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    TextView t1;
-    View fragmentView;
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -70,33 +67,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        t1 = (TextView) view.findViewById(R.id.test);
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        this.fragmentView = view;
-
-        t1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                t1Clicked(v);
-            }
-        });
-    }
-
-    public void t1Clicked(View view) {
-        Leagues fragment2 = new Leagues();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fl_navbar, fragment2);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }

@@ -2,6 +2,8 @@ package ihc.p7.statstips;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -29,6 +31,7 @@ public class HomePage extends AppCompatActivity {
         BottomNavigationView bottomNavBar = findViewById(R.id.bottom_navbar);
         bottomNavBar.setOnNavigationItemSelectedListener(navbarListener);
 
+
         // To start with HomeFragment()
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, new HomeFragment()).commit();
         circleMenu = findViewById(R.id.circleMenu);//314755
@@ -40,12 +43,14 @@ public class HomePage extends AppCompatActivity {
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int index) {
-                        Toast.makeText(getApplicationContext(), "Options= " + names[index], Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Options= " + names[index], Toast.LENGTH_SHORT).show();
+                        Fragment selected=null;
                         switch (index){
                             case 0: //Recommended Events
                                 break;
                             case 1: //Standings
-                                startActivity(new Intent(HomePage.this, Leagues.class));
+                                //startActivity(new Intent(HomePage.this, Leagues.class));
+                                selected = new Leagues();
                                 break;
                             case 2: //Teams
                                 startActivity(new Intent(HomePage.this, StandingPT.class));
@@ -54,6 +59,7 @@ public class HomePage extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Invalid option", Toast.LENGTH_SHORT).show();
                                 break;
                         }
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, selected).commit();
                     }
                 });
 

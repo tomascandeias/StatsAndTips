@@ -41,12 +41,10 @@ public class AccountFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ListView simpleList;
-    String itemList[] = {"Name", "Age", "E-mail", "Favourite Teams"};
-
-    Spinner dropdown;
+    Spinner dropdown, dropRem;
 
     List<String> items = new ArrayList<String>();
+    List<String> itemsRem = new ArrayList<String>();
 
 
 /*String[] items = new String[]{
@@ -54,7 +52,7 @@ public class AccountFragment extends Fragment {
 };*/
 
     Button b1, b2, b3;
-    TextView t1,t2,t3;
+    TextView t1,t2,t3, t4;
     TextInputEditText et1,et2,et3;
     View fragmentView;
 
@@ -105,6 +103,7 @@ public class AccountFragment extends Fragment {
         t1 = (TextView) view.findViewById(R.id.textViewName);
         t2 = (TextView) view.findViewById(R.id.textViewEmail);
         t3 = (TextView) view.findViewById(R.id.textFavTeam);
+        t4 = (TextView) view.findViewById(R.id.textRemFavTeam);
 
 
         et1 = (TextInputEditText) view.findViewById(R.id.editTextViewName);
@@ -114,9 +113,15 @@ public class AccountFragment extends Fragment {
         items.add("FC Porto");
         items.add("Portugal");
         items.add("Beira-Mar");
+        itemsRem.add("Don't remove");
+        itemsRem.add("FC Porto");
+        itemsRem.add("Portugal");
+        itemsRem.add("Beira-Mar");
 
         dropdown = (Spinner) view.findViewById(R.id.spinner);
         initspinnerfooter();
+        dropRem = (Spinner) view.findViewById(R.id.spinnerRem);
+        removeSpinner();
 
         return view;
     }
@@ -156,6 +161,15 @@ public class AccountFragment extends Fragment {
 
     }
 
+    private void removeSpinner() {
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_selected_items, itemsRem);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_items);
+
+        dropRem.setAdapter(adapter);
+
+    }
+
     // Function that allows you to change your profile info
     // It is called when se click on edit info btn
     public void b1Clicked(View view){
@@ -165,10 +179,12 @@ public class AccountFragment extends Fragment {
         t1.setVisibility(view.GONE);
         t2.setVisibility(view.GONE);
         t3.setVisibility(view.GONE);
+        t4.setVisibility(View.VISIBLE);
         et1.setVisibility(view.VISIBLE);
         et2.setVisibility(view.VISIBLE);
         et3.setVisibility(view.VISIBLE);
         dropdown.setVisibility(view.GONE);
+        dropRem.setVisibility(View.VISIBLE);
     }
 
     //Function to save all changes made to the profile
@@ -180,17 +196,23 @@ public class AccountFragment extends Fragment {
         t1.setVisibility(view.VISIBLE);
         t2.setVisibility(view.VISIBLE);
         t3.setVisibility(view.VISIBLE);
+        t4.setVisibility(View.GONE);
         et1.setVisibility(view.GONE);
         if (et1.getText().toString().length()>0) t1.setText(et1.getText().toString());
         et2.setVisibility(view.GONE);
         if (et2.getText().toString().length()>0) t2.setText(et2.getText().toString());
         et3.setVisibility(view.GONE);
         if (et3.getText().toString().length()>0) {
-
             items.add(et3.getText().toString());
-
+            itemsRem.add(et3.getText().toString());
+        }
+        String remove = dropRem.getSelectedItem().toString();
+        if(items.contains(remove)){
+            items.remove(remove);
+            itemsRem.remove(remove);
         }
         dropdown.setVisibility(view.VISIBLE);
+        dropRem.setVisibility(View.GONE);
     }
 
     //Function to discard all changes made to the profile
@@ -202,9 +224,11 @@ public class AccountFragment extends Fragment {
         t1.setVisibility(view.VISIBLE);
         t2.setVisibility(view.VISIBLE);
         t3.setVisibility(view.VISIBLE);
+        t4.setVisibility(View.GONE);
         et1.setVisibility(view.GONE);
         et2.setVisibility(view.GONE);
         et3.setVisibility(view.GONE);
         dropdown.setVisibility(view.VISIBLE);
+        dropRem.setVisibility(View.GONE);
     }
 }

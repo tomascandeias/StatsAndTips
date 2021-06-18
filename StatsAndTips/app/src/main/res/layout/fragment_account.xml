@@ -125,6 +125,36 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/textRemFavTeam"
+            android:layout_width="276dp"
+            android:layout_height="31dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="66dp"
+            android:layout_marginLeft="66dp"
+            android:layout_marginBottom="200dp"
+            android:drawableLeft="@android:drawable/ic_delete"
+            android:text="Remove Team"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
+        <Spinner
+            android:id="@+id/spinnerRem"
+            android:layout_width="276dp"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="98dp"
+            android:layout_marginLeft="98dp"
+            android:layout_marginBottom="156dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextViewFavourite"
             android:inputType="textPersonName"
@@ -137,7 +167,7 @@
             android:layout_marginLeft="64dp"
             android:layout_marginBottom="239dp"
             android:drawableLeft="@android:drawable/btn_star_big_on"
-            android:hint="Adicione uma equipa"
+            android:hint="Add a team to your fav"
             android:textColorHint="@color/white"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
@@ -169,7 +199,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="124dp"
-            android:layout_marginBottom="136dp"
+            android:layout_marginBottom="86dp"
             android:background="@drawable/rounded_corners"
             android:gravity="center"
             android:text="Save Changes"
@@ -186,7 +216,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="220dp"
             android:layout_marginLeft="124dp"
-            android:layout_marginBottom="136dp"
+            android:layout_marginBottom="86dp"
             android:background="@drawable/rounded_corners"
             android:gravity="center"
             android:text="Discard"
