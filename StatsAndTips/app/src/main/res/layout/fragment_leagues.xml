@@ -31,7 +31,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="109dp"
-            tools:src="@drawable/portugal" />
+            android:src="@drawable/portugal" />
 
         <TextView
             android:id="@+id/ptLeague"
@@ -63,7 +63,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="169dp"
-            tools:src="@drawable/inglaterra" />
+            android:src="@drawable/inglaterra" />
 
         <TextView
             android:id="@+id/enLeague"
@@ -95,7 +95,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="229dp"
-            tools:src="@drawable/germany" />
+            android:src="@drawable/germany" />
 
         <TextView
             android:id="@+id/gerLeague"
@@ -127,7 +127,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="289dp"
-            tools:src="@drawable/italy" />
+            android:src="@drawable/italy" />
 
         <TextView
             android:id="@+id/itLeague"
@@ -159,7 +159,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="349dp"
-            tools:src="@drawable/spain" />
+            android:src="@drawable/spain" />
 
         <TextView
             android:id="@+id/esLeague"
@@ -191,7 +191,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="409dp"
-            tools:src="@drawable/france" />
+            android:src="@drawable/france" />
 
         <TextView
             android:id="@+id/frLeague"

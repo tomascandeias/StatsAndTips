@@ -661,10 +661,11 @@
                 </TableRow>
 
                 <TableRow
-                    android:background="@drawable/rounded_corners_relegated"
+
                     android:minHeight="80px">
 
                     <TextView
+                        android:background="@drawable/rounded_corners_relegated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
@@ -700,10 +701,11 @@
 
                 <TableRow
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_corners_relegated"
+
                     android:minHeight="80px">
 
                     <TextView
+                        android:background="@drawable/rounded_corners_relegated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
