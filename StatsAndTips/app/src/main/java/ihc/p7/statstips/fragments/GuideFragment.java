@@ -1,17 +1,16 @@
 package ihc.p7.statstips.fragments;
 
-import android.app.Activity;
-import android.content.res.Resources;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ihc.p7.statstips.R;
@@ -31,6 +30,11 @@ public class GuideFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView textViewItem1, textViewItem2, textViewItem3;
+    private TextView textViewSubItem1, odds1, odds2, textViewSubItem3;
+    private ImageView howoddswork, decimalodds;
+    private View fragmentView;
 
     public GuideFragment() {
         // Required empty public constructor
@@ -61,22 +65,98 @@ public class GuideFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
+    // First guide item
+    public void onClick1(View v) {
+        if (textViewSubItem1.getVisibility() == v.VISIBLE)
+            textViewSubItem1.setVisibility(v.GONE);
+        else
+            textViewSubItem1.setVisibility(v.VISIBLE);
+    }
+
+    // Second guide item
+    public void onClick2(View v) {
+        if (odds1.getVisibility() == View.VISIBLE) {
+            odds1.setVisibility(View.GONE);
+            odds2.setVisibility(View.GONE);
+            howoddswork.setVisibility(View.GONE);
+            decimalodds.setVisibility(View.GONE);
+        } else {
+            odds1.setVisibility(View.VISIBLE);
+            odds2.setVisibility(View.VISIBLE);
+            howoddswork.setVisibility(View.VISIBLE);
+            decimalodds.setVisibility(View.VISIBLE);
+        }
+    }
+
+    // Third guide item
+    public void onClick3(View v) {
+        if (textViewSubItem3.getVisibility() == View.VISIBLE)
+            textViewSubItem3.setVisibility(View.GONE);
+        else
+            textViewSubItem3.setVisibility(View.VISIBLE);
+    }
+
+    public void resetVisibilities(){
+        textViewItem1.setVisibility(View.VISIBLE);
+        textViewItem2.setVisibility(View.VISIBLE);
+        textViewItem3.setVisibility(View.VISIBLE);
+
+        textViewSubItem1.setVisibility(View.GONE);
+        odds1.setVisibility(View.GONE);
+        odds2.setVisibility(View.GONE);
+        howoddswork.setVisibility(View.GONE);
+        decimalodds.setVisibility(View.GONE);
+        textViewSubItem3.setVisibility(View.GONE);
+    }
+
+    @SuppressLint("CutPasteId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_guide, container, false);
 
-        ImageView howoddswork = view.findViewById(R.id.howoddswork);
-        final LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) howoddswork.getLayoutParams();
-        layoutParams.setMargins(0, 20, 0, 0);
 
-        ImageView decimalodds = view.findViewById(R.id.decimalodds);
-        final LinearLayout.LayoutParams layoutParams2 = (LinearLayout.LayoutParams) decimalodds.getLayoutParams();
-        layoutParams2.setMargins(0, 20, 0, 0);
+        textViewItem1 = (TextView) view.findViewById(R.id.textViewItem1);
+        textViewItem3 = (TextView) view.findViewById(R.id.textViewItem3);
+        textViewSubItem1 = (TextView) view.findViewById(R.id.textViewSubItem1);
+        odds1 = (TextView) view.findViewById(R.id.odds1);
+        howoddswork = view.findViewById(R.id.howoddswork);
+        odds2 = (TextView) view.findViewById(R.id.odds1);
+        decimalodds = view.findViewById(R.id.decimalodds);
+        textViewSubItem3 = (TextView) view.findViewById(R.id.textViewSubItem3);
+
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        this.fragmentView = view;
+
+        textViewItem1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClick1(v);
+            }
+        });
+        textViewItem2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClick2(v);
+            }
+        });
+        textViewItem3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onClick3(v);
+            }
+        });
     }
 }

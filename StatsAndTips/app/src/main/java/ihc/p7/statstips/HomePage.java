@@ -47,6 +47,7 @@ public class HomePage extends AppCompatActivity {
                         Fragment selected=null;
                         switch (index){
                             case 0: //Recommended Events
+                                //startActivity(new Intent(HomePage.this, Eventos.class));
                                 break;
                             case 1: //Standings
                                 //startActivity(new Intent(HomePage.this, Leagues.class));
