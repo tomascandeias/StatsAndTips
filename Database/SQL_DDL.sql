@@ -106,6 +106,20 @@ CREATE TABLE SAT.Jogo (
   Equipaid_equipa2 varchar(10) NOT NULL, 
   PRIMARY KEY (id_jogo));
 
+CREATE TABLE SAT.Cliente (
+  id_cliente    VARCHAR(10),
+  nome          VARCHAR(100),
+  email         VARCHAR(255),
+  pass          VARCHAR(16),
+  PRIMARY KEY (id_cliente)
+);
+
+CREATE TABLE SAT.Equipa_Cliente (
+  client_id     VARCHAR(10),
+  equipa_id     VARCHAR(10),
+  PRIMARY KEY (client_id, equipa_id)
+);
+
 ALTER TABLE SAT.Jogador ADD CONSTRAINT FKJogadoreEquipaid FOREIGN KEY (Equipaid) REFERENCES SAT.Equipa (id_equipa);
 
 ALTER TABLE SAT.Equipa ADD CONSTRAINT FKEquipa401218 FOREIGN KEY (Clubeid_clube) REFERENCES SAT.Clube (id_clube);
@@ -138,6 +152,8 @@ ALTER TABLE SAT.Jogador ADD CONSTRAINT FKJogador732794 FOREIGN KEY (Equipaid) RE
 ALTER TABLE SAT.Jogo ADD CONSTRAINT FKJogo252043 FOREIGN KEY (Equipaid_equipa) REFERENCES SAT.Equipa (id_equipa);
 ALTER TABLE SAT.Jogo ADD CONSTRAINT FKJogo861332 FOREIGN KEY (Equipaid_equipa2) REFERENCES SAT.Equipa (id_equipa);
  
+ALTER TABLE SAT.Equipa_Cliente ADD CONSTRAINT FKEquipaCliente001 FOREIGN KEY(client_id) REFERENCES SAT.Cliente (id_cliente)
+ALTER TABLE SAT.Equipa_Cliente ADD CONSTRAINT FKEquipaCliente002 FOREIGN KEY(equipa_id) REFERENCES SAT.Equipa (id_equipa)
 
 /*DROP TABLE SAT.Clube
 DROP TABLE SAT.Equipa
