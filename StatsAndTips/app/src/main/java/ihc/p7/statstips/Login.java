@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Login extends AppCompatActivity {
     private Button btn_login;
-    private TextView txt_loginGuest;
+    private TextView txt_loginGuest, txt_register;
     private EditText txtEmail;
     private EditText txtPass;
 
@@ -25,8 +25,6 @@ public class Login extends AppCompatActivity {
 
         txtEmail = findViewById(R.id.textInputEmail);
         txtPass = findViewById(R.id.editTextNumberPassword);
-
-
 
         btn_login = findViewById(R.id.btnLogin);
         btn_login.setOnClickListener(new View.OnClickListener(){
@@ -53,6 +51,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, HomePage.class));
+            }
+        });
+        txt_register = findViewById(R.id.textRegister);
+        txt_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, Register.class));
             }
         });
     }
