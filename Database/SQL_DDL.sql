@@ -3,7 +3,7 @@ GO
 
 CREATE TABLE SAT.Equipa (
   id_equipa varchar(10) NOT NULL, 
-  treinador varchar(10) NULL, 
+  treinador varchar(255) NULL, 
   ngolos    int NULL, 
   epoca     int NULL,
   Clubeid_clube varchar(10) NULL,
@@ -11,13 +11,13 @@ CREATE TABLE SAT.Equipa (
 
 CREATE TABLE SAT.Jogador (
   Equipaid      varchar(10) NOT NULL, 
-  id_jogador    varchar(10) IDENTITY NOT NULL, 
-  nome          varchar(10) NULL, 
+  id_jogador    varchar(10) NOT NULL, 
+  nome          varchar(255) NULL, 
   amarelos      int NULL, 
   vermelhos     int NULL, 
   njogos        int NULL, 
-  nacionalidade varchar(10) NULL, 
-  posicao       int NULL,
+  nacionalidade varchar(100) NULL, 
+  posicao       VARCHAR(3) NULL,
   Jogoid_jogo   varchar(10) NOT NULL, 
   PRIMARY KEY (id_jogador));
 
@@ -28,7 +28,7 @@ CREATE TABLE SAT.Competicao (
   PRIMARY KEY (id_competicao));
 
 CREATE TABLE SAT.Odd (
-  id_odd               varchar(10) IDENTITY NOT NULL, 
+  id_odd               varchar(10) NOT NULL, 
   vitoria              int NULL, 
   empate               int NULL, 
   derrota              int NULL, 
@@ -92,7 +92,7 @@ CREATE TABLE SAT.Taca (
   PRIMARY KEY(Competicaoid_competicao));
 
 
-CREATE TABLE Jogador_Jogo(
+CREATE TABLE SAT.Jogador_Jogo(
   Jogadorid_jogador varchar(10) NULL,
   Jogoid_jogo       varchar(10) NULL);
 
@@ -105,6 +105,20 @@ CREATE TABLE SAT.Jogo (
   Equipaid_equipa  varchar(10) NOT NULL, 
   Equipaid_equipa2 varchar(10) NOT NULL, 
   PRIMARY KEY (id_jogo));
+
+CREATE TABLE SAT.Cliente (
+  id_cliente    VARCHAR(10),
+  nome          VARCHAR(100),
+  email         VARCHAR(255),
+  pass          VARCHAR(16),
+  PRIMARY KEY (id_cliente)
+);
+
+CREATE TABLE SAT.Equipa_Cliente (
+  client_id     VARCHAR(10),
+  equipa_id     VARCHAR(10),
+  PRIMARY KEY (client_id, equipa_id)
+);
 
 ALTER TABLE SAT.Jogador ADD CONSTRAINT FKJogadoreEquipaid FOREIGN KEY (Equipaid) REFERENCES SAT.Equipa (id_equipa);
 
@@ -133,7 +147,30 @@ ALTER TABLE SAT.Liga ADD CONSTRAINT FKLiga446850 FOREIGN KEY (Competicaoid_compe
 
 ALTER TABLE SAT.Taca ADD CONSTRAINT FKTaca681458 FOREIGN KEY (Competicaoid_competicao) REFERENCES SAT.Competicao (id_competicao);
 
-ALTER TABLE SAT.Jogador ADD CONSTRAINT FKJogador732794 FOREIGN KEY (Jogoid_jogo) REFERENCES SAT.Jogo (id_jogo);
+ALTER TABLE SAT.Jogador ADD CONSTRAINT FKJogador732794 FOREIGN KEY (Equipaid) REFERENCES SAT.Equipa (id_equipa);
 
 ALTER TABLE SAT.Jogo ADD CONSTRAINT FKJogo252043 FOREIGN KEY (Equipaid_equipa) REFERENCES SAT.Equipa (id_equipa);
 ALTER TABLE SAT.Jogo ADD CONSTRAINT FKJogo861332 FOREIGN KEY (Equipaid_equipa2) REFERENCES SAT.Equipa (id_equipa);
+ 
+ALTER TABLE SAT.Equipa_Cliente ADD CONSTRAINT FKEquipaCliente001 FOREIGN KEY(client_id) REFERENCES SAT.Cliente (id_cliente)
+ALTER TABLE SAT.Equipa_Cliente ADD CONSTRAINT FKEquipaCliente002 FOREIGN KEY(equipa_id) REFERENCES SAT.Equipa (id_equipa)
+
+/*DROP TABLE SAT.Clube
+DROP TABLE SAT.Equipa
+DROP TABLE SAT.Jogador
+DROP TABLE SAT.Jogo
+DROP TABLE SAT.Odd
+DROP TABLE SAT.SeletorOdd
+DROP TABLE SAT.Administrador
+DROP TABLE SAT.CasaDeApostas
+DROP TABLE SAT.Registo
+DROP TABLE SAT.Arbitro
+
+DROP TABLE SAT.Equipa_Competicao
+DROP TABLE SAT.Competicao
+DROP TABLE SAT.Liga
+DROP TABLE SAT.Taca 
+DROP TABLE SAT.Jogador_Jogo*/
+
+ALTER TABLE SAT.Jogador ADD nome VARCHAR(255)
+ALTER TABLE SAT.Jogador DROP COLUMN Jogoid_Jogo
