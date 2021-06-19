@@ -68,7 +68,7 @@ public class Register extends AppCompatActivity {
 
     private void sendMail(String mail) {
         String msg = "Conta criada com sucesso!!";
-        String subject = "StatsAndTips";
+        String subject = "Stats&Tips";
 
         //Send Email
         JavaMailAPI javaMailAPI = new JavaMailAPI(this, mail.trim(), subject.trim(), msg);

@@ -210,6 +210,8 @@ public class AccountFragment extends Fragment {
         if(items.contains(remove)){
             items.remove(remove);
             itemsRem.remove(remove);
+            initspinnerfooter();
+            removeSpinner();
         }
         dropdown.setVisibility(view.VISIBLE);
         dropRem.setVisibility(View.GONE);
