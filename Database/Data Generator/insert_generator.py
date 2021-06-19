@@ -54,6 +54,10 @@ def generate_casadeapostas(id_casa):
 	return f"INSERT INTO SAT.CasaDeApostas(id_casa) VALUES(\'{id_casa}\')"
 
 
+# SAT.Cliente
+def generate_cliente(id_cliente, nome, email, password):
+	return f"INSERT INTO SAT.Cliente(id_cliente, nome, email, pass) VALUES(\'{id_cliente}\', \'{nome}\', \'{email}\', \'{password}\')"
+
 def writeInserIntoFile(fname, lst):
 	with open(fname, "w") as f:
 		for insert in lst:
@@ -61,28 +65,57 @@ def writeInserIntoFile(fname, lst):
 
 
 def main():
-	prefix_clube = ["Football Club", "Sport Club"]
-	sufix_clube = ["Braga", "Porto", "Aveiro", "Coimbra", "Leiria", "Lisboa", "Setubal", "Evora", "Beja", "Faro"]
-	
-	prefix_name = ["Antonio", "Eduardo", "Tomas", "Afonso", "Goncalo", "Francisco", "Andre", "Carlos", "Xavier"]
-	sufix_name = ["Oliveira", "Silva", "Souza", "Santos", "Vieira", "Rodrigues", "Goncalves", "Ferreira", "Pereira", "Gomes", "Alves", "Almeida", "Carvalho"]
-
-	competicao = generate_competicao("LIGA PT", "Liga Portugal", 10)
 
 	# Lists of inserts
+	competicao = list()
 	clubes = list()
 	equipas = list()
 	jogadores = list()
+	arbitros = list()
+	admin = list()
+	casadeapostas = list()
 
 	# Sets
 	id_clube = set()
 	id_equipa = set()
-	nomes_treinador = set()
 	id_jogador = set()
-	nomes_jogador = set()
+	nomes = set()
+	
+	
+	prefix_clube = ["Football Club", "Sport Club"]
+	sufix_clube = ["Braga", "Porto", "Aveiro", "Coimbra", "Leiria", "Lisboa", "Setubal", "Evora", "Beja", "Faro"]
+	
+	prefix_name = ["Antonio", "Eduardo", "Tomas", "Afonso", "Goncalo", "Francisco", "Andre", "Carlos", "Xavier", "Joaquim", "Joao", "Caetano"]
+	sufix_name = ["Oliveira", "Silva", "Souza", "Santos", "Vieira", "Rodrigues", "Goncalves", "Ferreira", "Pereira", "Gomes", "Alves", "Almeida", "Carvalho", "Pinhao", "Silveira", "Vilarinho"]
+
+	
+	# Competicao
+	print("Generating SAT.Competicao...")
+	competicao.append(generate_competicao("LIGA PT", "Liga Portugal", 10))
+
+
+	# Arbitro
+	print("Generating SAT.Arbitro...")
+	for i in range(3):
+		while True:
+			id = random.randint(0, 100)
+			nome = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
+			if nome not in nomes:
+				nomes.add(nome)
+				arbitros.append(generate_arbitro(f"AR{id}", nome))
+				break
+	
+	# Admin
+	id = random.randint(0, 100)
+	nome = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
+	admin.append(generate_admin(f"A{id}", None))
+
+	# CaseDeApostas
+	casadeapostas.append(generate_casadeapostas(f"BETCLIC"))
 
 	for i in range(10):
 		# Clube
+		print("Generating SAT.Clube")
 		while True:
 			id = random.randint(0, 100)
 			if id not in id_clube:
@@ -96,25 +129,27 @@ def main():
 		clubes.append(generate_clube(id, name, data_fundacao))
 		
 		# Equipa
+		print("Generating SAT.Equipa...")
 		while True:
 			id = random.randint(0, 100)
 			treinador = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
-			if id not in id_equipa and treinador not in nomes_treinador:
+			if id not in id_equipa and treinador not in nomes:
 				id_equipa.add(id)
-				nomes_treinador.add(treinador)
+				nomes.add(treinador)
 				break
 		
 		id = f"E{id}"
 		equipas.append(generate_equipa(id, treinador, 0, "2020/2021"))
 		
 		# Jogador
+		print("Generating SAT.Jogador...")
 		for i in range(11):
 			while True:
 				id = random.randint(0, 1000)
 				nome = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
-				if id not in id_jogador and nome not in nomes_jogador:
+				if id not in id_jogador and nome not in nomes:
 					id_jogador.add(id)
-					nomes_jogador.add(nome)
+					nomes.add(nome)
 					break
 
 			id = f"J{id}"
@@ -133,10 +168,14 @@ def main():
 				jogadores.append(generate_jogador(id, nome, amarelos, vermelhos, njogos, nacionalidade, "AV"))
 			
 	
+	
+		
+
 	# Save inserts into files
-	writeInserIntoFile("Insert_Clube.sql", clubes)
-	writeInserIntoFile("Insert_Equipas.sql", equipas)
-	writeInserIntoFile("Insert_Jogador.sql", jogadores)
+	# writeInserIntoFile("Insert_Competicao.sql", competicao)
+	# writeInserIntoFile("Insert_Clube.sql", clubes)
+	# writeInserIntoFile("Insert_Equipas.sql", equipas)
+	# writeInserIntoFile("Insert_Jogador.sql", jogadores)
 
 # Call main function
 main() 
