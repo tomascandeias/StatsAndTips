@@ -2,7 +2,7 @@ import random
 
 # SAT.Clube
 def generate_clube(id_clube, nome, data_fundacao):
-	return f"INSERT INTO SAT.Clube(id_clubes, nome, data_fundacao) VALUES(\'{id_clube}\', \'{nome}\', {data_fundacao})"
+	return f"INSERT INTO SAT.Clube(id_clube, nome, data_fundacao) VALUES(\'{id_clube}\', \'{nome}\', {data_fundacao})"
 
 # SAT.Equipa
 def generate_equipa(id_equipa, treinador, ngolos, epoca, clube_id):
@@ -10,7 +10,7 @@ def generate_equipa(id_equipa, treinador, ngolos, epoca, clube_id):
 
 # SAT.Competicao
 def generate_competicao(id_competicao, nome, nequipas):
-	return f"INSERT INTO SAT.Competicao(id_equipa, nome_equipa) VALUES(\'{id_competicao}\', \'{nome}\', {nequipas})"
+	return f"INSERT INTO SAT.Competicao(id_equipa, nome_equipa, nequipas) VALUES(\'{id_competicao}\', \'{nome}\', {nequipas})"
 
 # SAT.Liga
 def generate_liga(classificacoes):
@@ -118,8 +118,8 @@ def main():
 				id_clube.add(idclube)
 				break
 
-		idclube = f"C{idclube}"	
-		name = generate_random_name(prefix_name, sufix_clube)
+		
+		name = generate_random_name(prefix_clube, sufix_clube)
 		data_fundacao = random.randint(1890, 1950)
 		
 		clubes.append(generate_clube(idclube, name, data_fundacao))
