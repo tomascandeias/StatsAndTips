@@ -10,7 +10,7 @@ def generate_equipa(id_equipa, treinador, ngolos, epoca, clube_id):
 
 # SAT.Competicao
 def generate_competicao(id_competicao, nome, nequipas):
-	return f"INSERT INTO SAT.Competicao(id_equipa, nome_equipa, nequipas) VALUES(\'{id_competicao}\', \'{nome}\', {nequipas})"
+	return f"INSERT INTO SAT.Competicao(id_competicao, nome, nequipas) VALUES(\'{id_competicao}\', \'{nome}\', {nequipas})"
 
 # SAT.Liga
 def generate_liga(classificacoes):
@@ -26,7 +26,7 @@ def generate_jogador(equipa_id ,id_jogador, nome, amarelos, vermelhos, njogos, n
 
 # SAT.Jogo
 def generate_jogo(localizacao, data_hora, id_jogo, resultado, competicao_id, id_equipa1, id_equipa2):
-	return f"INSERT INTO SAT.Jogo(localizacao, data_hora, id_jogo, resultado, Competicaoid, Equipaid_equipa, Equipaid_equipa2) VALUES(\'{id_jogo}\', \'{localizacao}\', \'{data_hora}\', \'{resultado}\', \'{competicao_id}\', \'{id_equipa1}\', \'{id_equipa2}\')"
+	return f"INSERT INTO SAT.Jogo(localizacao, data_hora, id_jogo, resultado, Competicaoid, Equipaid_equipa, Equipaid_equipa2) VALUES(\'{localizacao}\', \'{data_hora}\', \'{id_jogo}\', \'{resultado}\', \'{competicao_id}\', \'{id_equipa1}\', \'{id_equipa2}\')"
 
 # SAT.Registo
 def generate_registo(nome, nfaltas, namarelos, ncantos, ngolos, id_jogo, id_arbitro):
@@ -41,7 +41,7 @@ def generate_odd(id_odd, vitoria, empate, derrota, vitoria_empate, total_golos, 
 	return f"INSERT INTO SAT.Odd(id_odd, vitoria, empate, derrota, vitoria_empate, total_golos, ambas_marcam, Jogoid_jogo) VALUES(\'{id_odd}\', {vitoria}, {empate}, {derrota}, {vitoria_empate}, {total_golos}, {ambas_marcam}, \'{id_jogo}\')"
 
 def generate_jogojogador(Jogadorid_jogador, Jogoid_jogo):
-	return f"INSERT INTO SAT.Arbitro(Jogadorid_jogador, Jogoid_jogo) VALUES(\'{Jogadorid_jogador}\', \'{Jogoid_jogo}\')"
+	return f"INSERT INTO SAT.Jogador_Jogo(Jogadorid_jogador, Jogoid_jogo) VALUES(\'{Jogadorid_jogador}\', \'{Jogoid_jogo}\')"
 
 # SAT.Cliente
 def generate_cliente(id_cliente, nome, email, password):
@@ -214,18 +214,19 @@ def main():
 			registos.append(generate_registo(idregisto, random.randint(0, 10), random.randint(0,4), random.randint(5, 15), ngolos, idjogo, idarbitro))
 			odds.append(generate_odd(idodd, vitoria, empate, derrota, vitoria_empate, ngolos, ambas_marcam, idjogo))
 	
-		
+	cliente = [generate_cliente("CL123" , "ambrosio", "ambrosio@ua.pt", "123654")]	
 
 	# Save inserts into files
-	writeInserIntoFile("Insert_Competicao.sql", competicao)
-	writeInserIntoFile("Insert_Clube.sql", clubes)
-	writeInserIntoFile("Insert_Equipas.sql", equipas)
-	writeInserIntoFile("Insert_Jogador.sql", jogadores)
-	writeInserIntoFile("Insert_Jogos.sql", jogos)
-	writeInserIntoFile("Insert_Arbitro.sql", arbitros)
-	writeInserIntoFile("Insert_Registos.sql", registos)
-	writeInserIntoFile("Insert_Odds.sql", odds)
-	writeInserIntoFile("Insert_JogoJogador.sql", jogo_jogador)
+	#writeInserIntoFile("Insert_Competicao.sql", competicao)
+	#writeInserIntoFile("Insert_Clube.sql", clubes)
+	#writeInserIntoFile("Insert_Equipas.sql", equipas)
+	#writeInserIntoFile("Insert_Jogador.sql", jogadores)
+	#writeInserIntoFile("Insert_Jogos.sql", jogos)
+	#writeInserIntoFile("Insert_Arbitro.sql", arbitros)
+	#writeInserIntoFile("Insert_Registos.sql", registos)
+	#writeInserIntoFile("Insert_Odds.sql", odds)
+	#writeInserIntoFile("Insert_JogoJogador.sql", jogo_jogador)
+	writeInserIntoFile("Insert_Client.sql", cliente)
 
 # Call main function
 main() 

@@ -83,7 +83,7 @@ CREATE TABLE SAT.Jogador_Jogo(
   PRIMARY KEY(Jogadorid_jogador, Jogoid_jogo));
 
 CREATE TABLE SAT.Jogo (
-  localizacao            int NULL, 
+  localizacao            varchar(10) NULL, 
   data_hora             varchar(10) NULL, 
   id_jogo          varchar(10) NOT NULL, 
   resultado        varchar(10) NULL, 
@@ -149,6 +149,5 @@ DROP TABLE SAT.Competicao
 DROP TABLE SAT.Liga
 DROP TABLE SAT.Taca 
 DROP TABLE SAT.Jogador_Jogo*/
-
 
 
