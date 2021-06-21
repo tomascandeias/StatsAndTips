@@ -108,7 +108,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\tomas\Desktop\github\StatsAndTips\StatsAndTips\app\src\main\res\drawable\inglaterra.png" />
+                                                <entry key="imagePath" value="C:\Users\tomas\Desktop\soccer_stadium.jpg" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -140,8 +140,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundAssetType" value="CLIP_ART" />
-                                      <entry key="outputName" value="add" />
+                                      <entry key="outputName" value="soccer_stadium" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -310,11 +309,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

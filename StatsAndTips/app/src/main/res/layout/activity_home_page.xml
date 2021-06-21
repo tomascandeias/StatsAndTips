@@ -37,7 +37,7 @@
             android:id="@+id/btnBD"
             android:layout_width="237dp"
             android:layout_height="56dp"
-            android:text="Standings in Fantasy League"
+            android:text="Teams in Fantasy League"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.488"

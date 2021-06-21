@@ -68,6 +68,9 @@ public class HomePage extends AppCompatActivity {
         Button btnStanding = (Button) findViewById(R.id.btnStanding);
         btnStanding.setOnClickListener(this::onClick);
 
+        Button btnBD = (Button) findViewById(R.id.btnBD);
+        btnBD.setOnClickListener(this::onClick);
+
     }
 
     public void onClick(View view) {
@@ -79,16 +82,17 @@ public class HomePage extends AppCompatActivity {
                 break;
 
             case R.id.btnStanding:
+                System.err.println("Leagues");
                 fragment = new Leagues();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, fragment).commit();
                 break;
+
+            case R.id.btnBD:
+                System.err.println("BD");
+                fragment = new Club();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, fragment).commit();
+                break;
         }
-    }
-
-    public void replaceFragment(Fragment someFragment) {
-
-
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navbarListener = item -> {
