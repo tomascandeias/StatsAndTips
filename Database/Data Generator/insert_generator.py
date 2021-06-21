@@ -40,7 +40,8 @@ def generate_arbitro(id_arbitro, nome):
 def generate_odd(id_odd, vitoria, empate, derrota, vitoria_empate, total_golos, ambas_marcam, id_jogo):
 	return f"INSERT INTO SAT.Odd(id_odd, vitoria, empate, derrota, vitoria_empate, total_golos, ambas_marcam, Jogoid_jogo) VALUES(\'{id_odd}\', {vitoria}, {empate}, {derrota}, {vitoria_empate}, {total_golos}, {ambas_marcam}, \'{id_jogo}\')"
 
-
+def generate_jogojogador(Jogadorid_jogador, Jogoid_jogo):
+	return f"INSERT INTO SAT.Arbitro(Jogadorid_jogador, Jogoid_jogo) VALUES(\'{Jogadorid_jogador}\', \'{Jogoid_jogo}\')"
 
 # SAT.Cliente
 def generate_cliente(id_cliente, nome, email, password):
@@ -71,6 +72,8 @@ def main():
 	jogos = list()
 	registos = list()
 	odds = list()
+	jogo_jogador = list()
+	jogador_equipa = list()
 
 
 	# Sets
@@ -162,6 +165,7 @@ def main():
 			else:
 				jogadores.append(generate_jogador(idequipa, idjogador, nome, amarelos, vermelhos, njogos, nacionalidade, "AV"))
 			
+			jogador_equipa.append((idequipa, idjogador))
 	
 	for i in range(len(id_equipa)):
 		for j in range(i+1, len(id_equipa)):
@@ -188,6 +192,11 @@ def main():
 			resultado = ["0-0", "1-0", "0-1", "1-1", "2-1", "1-2", "2-2"][random.randint(0, 5)]
 			jogos.append(generate_jogo(localizacao, "15:00", idjogo, resultado, "LIGA PT", list(id_equipa)[i], list(id_equipa)[j]))
 			
+			# JOGO JOGADOR
+			for eq, jog in jogador_equipa:
+				if eq == list(id_equipa)[i] or eq == list(id_equipa)[j]:
+					jogo_jogador.append(generate_jogojogador(jog, idjogo))
+
 			# REGISTO e ODD
 			idarbitro = list(id_arbitros)[random.randint(0,2)]
 			
@@ -216,6 +225,7 @@ def main():
 	writeInserIntoFile("Insert_Arbitro.sql", arbitros)
 	writeInserIntoFile("Insert_Registos.sql", registos)
 	writeInserIntoFile("Insert_Odds.sql", odds)
+	writeInserIntoFile("Insert_JogoJogador.sql", jogo_jogador)
 
 # Call main function
 main() 

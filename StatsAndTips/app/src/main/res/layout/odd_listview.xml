@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="jogo"
+                android:text="AxB"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -30,35 +30,35 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/stEq"
+                    android:id="@+id/win"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:foregroundGravity="center"
                     android:clickable="true"
                     android:gravity="left"
-                    android:text="1"
+                    android:text="Win"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/xEq"
+                    android:id="@+id/draw"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:foregroundGravity="center"
                     android:clickable="true"
                     android:gravity="center"
-                    android:text="x"
+                    android:text="Draw"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/scnEq"
+                    android:id="@+id/loss"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:foregroundGravity="center"
                     android:clickable="true"
                     android:gravity="right"
-                    android:text="2"
+                    android:text="Loss"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -69,35 +69,35 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/stEq2"
+                    android:id="@+id/winVal"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:foregroundGravity="center"
                     android:clickable="true"
                     android:gravity="left"
-                    android:text="1"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/xEq2"
+                    android:id="@+id/drawVal"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:foregroundGravity="center"
                     android:clickable="true"
                     android:gravity="center"
-                    android:text="x"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/scnEq2"
+                    android:id="@+id/lossVal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:foregroundGravity="center"
                     android:clickable="true"
                     android:gravity="right"
-                    android:text="2"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />

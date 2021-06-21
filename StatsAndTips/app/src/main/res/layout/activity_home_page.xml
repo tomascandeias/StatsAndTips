@@ -32,6 +32,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.399" />
+
+        <Button
+            android:id="@+id/btnBD"
+            android:layout_width="237dp"
+            android:layout_height="56dp"
+            android:text="Standings in Fantasy League"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.524" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
