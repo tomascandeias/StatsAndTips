@@ -1,5 +1,11 @@
 import random
 
+def generate_random_name(prefix_names, suffix_names):
+	return prefix_names[random.randint(0, len(prefix_names)-1)] + " " + suffix_names[random.randint(0, len(suffix_names)-1)]
+
+def generate_ID(pref):
+	return pref + str(random.randint(0, 1000))
+
 # SAT.Clube
 def generate_clube(id_clube, nome, data_fundacao):
 	return f"INSERT INTO SAT.Clube(id_clubes, nome, data_fundacao) VALUES(\'{id_clube}\', \'{nome}\', {data_fundacao})"
@@ -79,6 +85,7 @@ def main():
 	id_clube = set()
 	id_equipa = set()
 	id_jogador = set()
+	id_arbitros = set()
 	nomes = set()
 	
 	
@@ -98,17 +105,18 @@ def main():
 	print("Generating SAT.Arbitro...")
 	for i in range(3):
 		while True:
-			id = random.randint(0, 100)
-			nome = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
-			if nome not in nomes:
+			id = generate_ID("AR")
+			nome = generate_random_name(prefix_name, sufix_name)
+			if nome not in nomes and id not in id_arbitros:
 				nomes.add(nome)
-				arbitros.append(generate_arbitro(f"AR{id}", nome))
+				id_arbitros.add(id)
+				arbitros.append(generate_arbitro(id, nome))
 				break
 	
 	# Admin
-	id = random.randint(0, 100)
-	nome = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
-	admin.append(generate_admin(f"A{id}", None))
+	id = generate_ID("A")
+	nome = generate_random_name(prefix_name, sufix_name)
+	admin.append(generate_admin(f"id", None))
 
 	# CaseDeApostas
 	casadeapostas.append(generate_casadeapostas(f"BETCLIC"))
@@ -117,13 +125,13 @@ def main():
 		# Clube
 		print("Generating SAT.Clube")
 		while True:
-			id = random.randint(0, 100)
+			id = generate_ID("C")
 			if id not in id_clube:
 				id_clube.add(id)
 				break
 
 		id = f"C{id}"	
-		name = prefix_clube[random.randint(0, len(prefix_clube)-1)] + " " + sufix_clube[random.randint(0, len(sufix_clube)-1)]
+		name = generate_random_name(prefix_name, sufix_clube)
 		data_fundacao = random.randint(1890, 1950)
 		
 		clubes.append(generate_clube(id, name, data_fundacao))
