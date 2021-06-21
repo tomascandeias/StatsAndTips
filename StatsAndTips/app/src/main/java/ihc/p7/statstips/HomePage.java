@@ -1,18 +1,15 @@
 package ihc.p7.statstips;
 
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hitomi.cmlibrary.CircleMenu;
-import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 import ihc.p7.statstips.fragments.AccountFragment;
 import ihc.p7.statstips.fragments.GuideFragment;
@@ -34,7 +31,7 @@ public class HomePage extends AppCompatActivity {
 
         // To start with HomeFragment()
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, new HomeFragment()).commit();
-        circleMenu = findViewById(R.id.circleMenu);//314755
+        /*circleMenu = findViewById(R.id.circleMenu);//314755
 
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.drawable.add, R.drawable.remove)
                 .addSubMenu(Color.parseColor("#CDCDCD"), R.drawable.star)
@@ -47,7 +44,7 @@ public class HomePage extends AppCompatActivity {
                         Fragment selected=null;
                         switch (index){
                             case 0: //Recommended Events
-                                //startActivity(new Intent(HomePage.this, Eventos.class));
+                                startActivity(new Intent(HomePage.this, Evento.class));
                                 break;
                             case 1: //Standings
                                 //startActivity(new Intent(HomePage.this, Leagues.class));
@@ -62,7 +59,35 @@ public class HomePage extends AppCompatActivity {
                         }
                         getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, selected).commit();
                     }
-                });
+                });*/
+
+
+        Button btnEventos = (Button) findViewById(R.id.btnEventos);
+        btnEventos.setOnClickListener(this::onClick);
+
+        Button btnStanding = (Button) findViewById(R.id.btnStanding);
+        btnStanding.setOnClickListener(this::onClick);
+
+    }
+
+    public void onClick(View view) {
+        Fragment fragment;
+        switch (view.getId()) {
+            case R.id.btnEventos:
+                fragment = new Evento();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, fragment).commit();
+                break;
+
+            case R.id.btnStanding:
+                fragment = new Leagues();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, fragment).commit();
+                break;
+        }
+    }
+
+    public void replaceFragment(Fragment someFragment) {
+
+
 
     }
 

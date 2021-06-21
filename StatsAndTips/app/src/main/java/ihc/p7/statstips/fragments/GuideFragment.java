@@ -71,10 +71,10 @@ public class GuideFragment extends Fragment {
 
     // First guide item
     public void onClick1(View v) {
-        if (textViewSubItem1.getVisibility() == v.VISIBLE)
-            textViewSubItem1.setVisibility(v.GONE);
+        if (textViewSubItem1.getVisibility() == View.VISIBLE)
+            textViewSubItem1.setVisibility(View.GONE);
         else
-            textViewSubItem1.setVisibility(v.VISIBLE);
+            textViewSubItem1.setVisibility(View.VISIBLE);
     }
 
     // Second guide item
@@ -113,7 +113,6 @@ public class GuideFragment extends Fragment {
         textViewSubItem3.setVisibility(View.GONE);
     }
 
-    @SuppressLint("CutPasteId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -122,14 +121,16 @@ public class GuideFragment extends Fragment {
 
 
         textViewItem1 = (TextView) view.findViewById(R.id.textViewItem1);
+        textViewItem2 = (TextView) view.findViewById(R.id.textViewItem2);
         textViewItem3 = (TextView) view.findViewById(R.id.textViewItem3);
         textViewSubItem1 = (TextView) view.findViewById(R.id.textViewSubItem1);
         odds1 = (TextView) view.findViewById(R.id.odds1);
         howoddswork = view.findViewById(R.id.howoddswork);
-        odds2 = (TextView) view.findViewById(R.id.odds1);
+        odds2 = (TextView) view.findViewById(R.id.odds2);
         decimalodds = view.findViewById(R.id.decimalodds);
         textViewSubItem3 = (TextView) view.findViewById(R.id.textViewSubItem3);
 
+        resetVisibilities();
 
         return view;
     }

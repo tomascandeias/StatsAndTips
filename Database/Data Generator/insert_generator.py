@@ -41,18 +41,6 @@ def generate_odd(id_odd, vitoria, empate, derrota, vitoria_empate, total_golos, 
 	return f"INSERT INTO SAT.Odd(id_odd, vitoria, empate, derrota, vitoria_empate, total_golos, ambas_marcam, Jogoid_jogo) VALUES(\'{id_odd}\', {vitoria}, {empate}, {derrota}, {vitoria_empate}, {total_golos}, {ambas_marcam}, \'{id_jogo}\')"
 
 
-# SAT.SeletorOdd
-def generate_seletorodd(id_seletor):
-	return f"INSERT INTO SAT.SeletorOdd(id_seletor) VALUES(\'{id_seletor}\')"
-
-# SAT.Admin
-def generate_admin(id_admin, selecao):
-	return f"INSERT INTO SAT.Administrador(id_admin, selecao) VALUES(\'{id_admin}\', \'{selecao}\')"
-
-# SAT.CasaDeApostas
-def generate_casadeapostas(id_casa):
-	return f"INSERT INTO SAT.CasaDeApostas(id_casa) VALUES(\'{id_casa}\')"
-
 
 # SAT.Cliente
 def generate_cliente(id_cliente, nome, email, password):
@@ -80,8 +68,6 @@ def main():
 	equipas = list()
 	jogadores = list()
 	arbitros = list()
-	admin = list()
-	casadeapostas = list()
 	jogos = list()
 	registos = list()
 	odds = list()
@@ -121,14 +107,7 @@ def main():
 				id_arbitros.add(id)
 				arbitros.append(generate_arbitro(id, nome))
 				break
-	
-	# Admin
-	id = generate_ID("A")
-	nome = generate_random_name(prefix_name, sufix_name)
-	admin.append(generate_admin(f"id", None))
 
-	# CaseDeApostas
-	casadeapostas.append(generate_casadeapostas(f"BETCLIC"))
 
 	for i in range(10):
 		# Clube

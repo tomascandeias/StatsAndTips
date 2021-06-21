@@ -34,8 +34,7 @@ CREATE TABLE SAT.Odd (
   derrota              int NULL, 
   vitoria_empate       int NULL, 
   total_golos          int NULL, 
-  ambas_marcam         int NULL, 
-  SeletorOddid_seletor varchar(10) NOT NULL, 
+  ambas_marcam         int NULL,
   Jogoid_jogo          varchar(10) NOT NULL, 
   PRIMARY KEY (id_odd));
 
@@ -61,25 +60,11 @@ CREATE TABLE SAT.Equipa_Competicao (
   PRIMARY KEY (Equipaid_equipa, 
   Competicaoid));
 
-CREATE TABLE SAT.SeletorOdd (
-  id_seletor varchar(10) NOT NULL, 
-  PRIMARY KEY (id_seletor));
 
 CREATE TABLE SAT.Arbitro (
   id_arbitro varchar(10) NOT NULL, 
   nome       varchar(50) NULL,
   PRIMARY KEY(id_arbitro));
-
-CREATE TABLE SAT.Administrador (
-  id_admin             varchar(10) NOT NULL, 
-  selecao              varchar(20) NULL, 
-  SeletorOddid_seletor varchar(10) NOT NULL,
-  PRIMARY KEY(id_admin));
-
-CREATE TABLE SAT.CasaDeApostas (
-  id_casa              varchar(10) NOT NULL, 
-  SeletorOddid_seletor varchar(10) NOT NULL,
-  PRIMARY KEY(id_casa));
 
 CREATE TABLE SAT.Liga (
   classificacoes          varchar(255) NULL, 
@@ -130,11 +115,6 @@ ALTER TABLE SAT.Equipa_Competicao ADD CONSTRAINT FKEquipa_Com810297 FOREIGN KEY 
 ALTER TABLE SAT.Jogador_Jogo ADD CONSTRAINT FKJogador_Jogo1 FOREIGN KEY (Jogadorid_jogador) REFERENCES SAT.Jogador (id_jogador);
 ALTER TABLE SAT.Jogador_Jogo ADD CONSTRAINT FKJogador_Jogo2 FOREIGN KEY (Jogoid_jogo) REFERENCES SAT.Jogo (id_jogo);
 
-ALTER TABLE SAT.Odd ADD CONSTRAINT FKOdd956964 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SAT.SeletorOdd (id_seletor);
-
-ALTER TABLE SAT.Administrador ADD CONSTRAINT FKAdmin919941 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SAT.SeletorOdd (id_seletor);
-
-ALTER TABLE SAT.CasaDeApostas ADD CONSTRAINT FKCasaDeApos51658 FOREIGN KEY (SeletorOddid_seletor) REFERENCES SAT.SeletorOdd (id_seletor);
 
 ALTER TABLE SAT.Registo ADD CONSTRAINT FKRegisto532354 FOREIGN KEY (Arbitroid_arbitro) REFERENCES SAT.Arbitro (id_arbitro);
 ALTER TABLE SAT.Registo ADD CONSTRAINT FKRegisto787259 FOREIGN KEY (Jogoid_jogo) REFERENCES SAT.Jogo (id_jogo);
@@ -160,9 +140,6 @@ DROP TABLE SAT.Equipa
 DROP TABLE SAT.Jogador
 DROP TABLE SAT.Jogo
 DROP TABLE SAT.Odd
-DROP TABLE SAT.SeletorOdd
-DROP TABLE SAT.Administrador
-DROP TABLE SAT.CasaDeApostas
 DROP TABLE SAT.Registo
 DROP TABLE SAT.Arbitro
 
