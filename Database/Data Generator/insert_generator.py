@@ -11,8 +11,8 @@ def generate_clube(id_clube, nome, data_fundacao):
 	return f"INSERT INTO SAT.Clube(id_clubes, nome, data_fundacao) VALUES(\'{id_clube}\', \'{nome}\', {data_fundacao})"
 
 # SAT.Equipa
-def generate_equipa(id_equipa, treinador, ngolos, epoca):
-	return f"INSERT INTO SAT.Equipa(id_equipa, treinador, ngolos, epoca) VALUES(\'{id_equipa}\', \'{treinador}\', {ngolos}, \'{epoca}\')"
+def generate_equipa(id_equipa, treinador, ngolos, epoca, clube_id):
+	return f"INSERT INTO SAT.Equipa(id_equipa, treinador, ngolos, epoca, Clubeid_clube) VALUES(\'{id_equipa}\', \'{treinador}\', {ngolos}, \'{epoca}\', \'{clube_id}\')"
 
 # SAT.Competicao
 def generate_competicao(id_competicao, nome, nequipas):
@@ -27,8 +27,8 @@ def generate_taca(rondas):
 	return f"INSERT INTO SAT.Taca(rondas) VALUES(\'{rondas}\')"
 
 # SAT.Jogador
-def generate_jogador(id_jogador, nome, amarelos, vermelhos, njogos, nacionalidade, posicao):
-	return f"INSERT INTO SAT.Jogador(id_jogador, nome, amarelos, vermelhos, njogos, nacionalidade, posicao) VALUES(\'{id_jogador}\', \'{nome}\', {amarelos}, {vermelhos}, {njogos}, \'{nacionalidade}\', \'{posicao}\')"
+def generate_jogador(equipa_id ,id_jogador, nome, amarelos, vermelhos, njogos, nacionalidade, posicao):
+	return f"INSERT INTO SAT.Jogador( Equipaid , id_jogador, nome, amarelos, vermelhos, njogos, nacionalidade, posicao) VALUES(\'{equipa_id}\', \'{id_jogador}\', \'{nome}\', {amarelos}, {vermelhos}, {njogos}, \'{nacionalidade}\', \'{posicao}\')"
 
 # SAT.Jogo
 def generate_jogo(id_jogo, localizacao, data_hora, resultado, ):
@@ -139,28 +139,27 @@ def main():
 		# Equipa
 		print("Generating SAT.Equipa...")
 		while True:
-			id = random.randint(0, 100)
-			treinador = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
+			id = generate_ID("E")
+			treinador = generate_random_name(prefix_name, sufix_name)
 			if id not in id_equipa and treinador not in nomes:
 				id_equipa.add(id)
 				nomes.add(treinador)
 				break
 		
-		id = f"E{id}"
+		
 		equipas.append(generate_equipa(id, treinador, 0, "2020/2021"))
 		
 		# Jogador
 		print("Generating SAT.Jogador...")
 		for i in range(11):
 			while True:
-				id = random.randint(0, 1000)
-				nome = prefix_name[random.randint(0, len(prefix_name)-1)] + " " + sufix_name[random.randint(0, len(sufix_name)-1)]
+				id = generate_ID("J")
+				nome = generate_random_name(prefix_name, sufix_name)
 				if id not in id_jogador and nome not in nomes:
 					id_jogador.add(id)
 					nomes.add(nome)
 					break
 
-			id = f"J{id}"
 			amarelos = random.randint(0,5)
 			vermelhos = random.randint(0,2)
 			njogos = 18
