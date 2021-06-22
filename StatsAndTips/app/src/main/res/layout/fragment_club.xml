@@ -12,6 +12,17 @@
         android:background="@drawable/gradient">
 
 
+        <ImageView
+            android:id="@+id/goBack"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:clickable="true"
+            android:src="@drawable/ic_arrow_back"></ImageView>
+
         <TextView
             android:id="@+id/textView20"
             android:layout_width="130dp"
@@ -41,7 +52,8 @@
             android:layout_marginRight="6dp"
             android:layout_marginBottom="238dp"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text=""/>
 
         <TextView
             android:id="@+id/textView19"
@@ -72,7 +84,8 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="270dp"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text=""/>
 
         <ImageView
             android:id="@+id/imageView2"
@@ -104,23 +117,21 @@
             android:layout_marginRight="9dp"
             android:layout_marginBottom="345dp"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text=""/>
 
         <Button
             android:id="@+id/btnJogadores"
-            android:layout_width="196dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="106dp"
-            android:layout_marginLeft="106dp"
-            android:layout_marginTop="531dp"
-            android:layout_marginEnd="108dp"
-            android:layout_marginRight="108dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="520dp"
+            android:layout_marginEnd="96dp"
+            android:layout_marginRight="96dp"
             android:layout_marginBottom="152dp"
             android:foregroundGravity="center"
             android:text="Team Lineup"
@@ -156,7 +167,8 @@
             android:layout_marginRight="5dp"
             android:layout_marginBottom="309dp"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text=""/>
 
         <TextView
             android:id="@+id/textView2"

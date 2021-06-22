@@ -62,6 +62,11 @@ public class Evento extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_evento, container, false);
         ListView odds = (ListView) v.findViewById(R.id.listView);
+
+        //1º passar da DB para ArrayList<Odd>
+        //2º criar o adapter e passar o arraylist -> OddListAdapter x = new ...
+        //3º
+
         return v;
     }
 }

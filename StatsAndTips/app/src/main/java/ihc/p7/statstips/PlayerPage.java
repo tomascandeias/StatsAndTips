@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.sql.SQLException;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +64,58 @@ public class PlayerPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_page, container, false);
+        View v = inflater.inflate(R.layout.fragment_player_page, container, false);
+
+        String[] value = getArguments() != null ? String.valueOf(getArguments().getString("player_page")).split(";") : null;
+
+        HandlerDB db = new HandlerDB();
+
+        System.err.println("PlayerPage() -> onCreateView()");
+        System.err.println(Arrays.toString(value));
+
+        ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
+
+        TextView textViewNameVal = (TextView) v.findViewById(R.id.textViewNameVal);
+        textViewNameVal.setText(value != null ? value[0].trim() : null);
+        
+        TextView textViewGamesVal = (TextView) v.findViewById(R.id.textViewGamesVal);
+        textViewGamesVal.setText(value != null ? value[1].trim() : null);
+        
+        TextView textViewNationalityVal = (TextView) v.findViewById(R.id.textViewNationalityVal);
+        textViewNationalityVal.setText(value != null ? value[2].trim() : null);
+        
+        TextView textViewPositionVal = (TextView) v.findViewById(R.id.textViewPositionVal);
+        textViewPositionVal.setText(value != null ? value[3].trim() : null);
+        
+        TextView textViewAmarelosVal = (TextView) v.findViewById(R.id.textViewAmarelosVal);
+        textViewAmarelosVal.setText(value != null ? value[4].trim() : null);
+        
+        TextView textViewVermelhosVal = (TextView) v.findViewById(R.id.textViewVermelhosVal);
+        textViewVermelhosVal.setText(value != null ? value[5].trim() : null);
+        
+        String id_clube = value != null ? value[6].trim() : null;
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new Player();
+                    System.err.printf("ID CLUB=%s\n", id_clube);
+                    // SQL Query
+                    try {
+                        Bundle b = new Bundle();
+                        b.putString("player", db.getPlayer(id_clube));
+                        frag.setArguments(b);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
+
+        
+        return v;
     }
 }

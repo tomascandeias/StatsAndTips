@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,21 +65,29 @@ public class FantasyLeague extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fantasy_league, container, false);
+
         HandlerDB db = new HandlerDB();
+
+        System.err.println("FantasyLeague() -> onCreateView()");
+
         TextView text = (TextView) v.findViewById(R.id.searchEditText);
+
         Button btnSearch = (Button) v.findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getFragmentManager() != null) {
                     Fragment frag = new Club();
+
+                    // SQL Query
                     try {
                         Bundle b = new Bundle();
-                        b.putString("id_clube", db.getClubePage(text.getText().toString()));
+                        b.putString("club", db.getClubeByNome(text.getText().toString()));
                         frag.setArguments(b);
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
+
                     getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
             }

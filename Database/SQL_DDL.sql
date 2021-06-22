@@ -151,3 +151,7 @@ DROP TABLE SAT.Taca
 DROP TABLE SAT.Jogador_Jogo*/
 
 
+-- INDEXAÇÂO
+CREATE INDEX ixJogadorNome ON SAT.Jogador(nome, Equipaid)
+CREATE INDEX ixEquipaClube ON SAT.Equipa(id_equipa, Clubeid_clube)
+CREATE INDEX ixJogoEquipas ON SAT.Jogo(id_jogo, Equipaid_equipa, Equipaid_equipa2)

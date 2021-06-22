@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradient">
 
+        <ImageView
+            android:id="@+id/goBack"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:clickable="true"
+            android:src="@drawable/ic_arrow_back"></ImageView>
 
         <ImageView
             android:id="@+id/imageView3"
@@ -163,7 +173,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="187dp"
+            android:layout_marginBottom="188dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -183,7 +193,8 @@
             android:layout_marginBottom="186dp"
             android:text="Amarelos"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textAlignment="2"/>
 
         <TextView
             android:id="@+id/textView13"

@@ -1,5 +1,7 @@
 -- todas as equipas com o respetivo nome do clube
-SELECT treinador, ngolos AS 'Numero de golos', nome, data_fundacao FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube) WHERE id_clube='C111'
+SELECT treinador, ngolos AS 'Numero de golos', nome, data_fundacao, id_clube FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube) WHERE id_clube='C111'
+
+SELECT treinador, ngolos, nome, data_fundacao, id_clube FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube) WHERE id_clube='C111'
 
 -- nome de todos os clubes
 SELECT nome FROM SAT.Clube
@@ -15,13 +17,15 @@ WHERE SAT.Cliente.nome='josefino'
 ;
 
 -- recebe id_jogador e da informação
-SELECT SAT.Jogador.nome , amarelos, vermelhos, njogos AS 'numero de jogos', nacionalidade, posicao AS 'Posição', SAT.Clube.nome AS 'Clube', SAT.Clube.id_clube as 'ID clube'
+SELECT SAT.Jogador.nome , njogos, nacionalidade, posicao, amarelos, vermelhos, SAT.Clube.id_clube
  FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) JOIN SAT.Jogador ON id_equipa=Equipaid) WHERE SAT.Jogador.id_jogador='J10';
 
 
 -- Receber um id_clube e devolver os nomes dos jogadores e as suas posicoes
-SELECT SAT.Jogador.nome , posicao AS 'Posição'
- FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) JOIN SAT.Jogador ON id_equipa=Equipaid) WHERE id_clube='';
+SELECT SAT.Jogador.nome , posicao, id_jogador, Clubeid_clube
+FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) JOIN SAT.Jogador ON id_equipa=Equipaid) WHERE id_clube='C111'
+
+
 
 /*SELECT * FROM SAT.Equipa
 SELECT * FROM SAT.Equipa_Cliente

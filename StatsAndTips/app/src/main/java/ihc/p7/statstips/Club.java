@@ -1,6 +1,5 @@
 package ihc.p7.statstips;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.sql.SQLException;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,17 +67,56 @@ public class Club extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_club, container, false);
 
-        String value = getArguments().getString("id_clube");
+        String[] value = getArguments() != null ? String.valueOf(getArguments().getString("club")).split(";") : null;
+
+        HandlerDB db = new HandlerDB();
+
+        System.err.println("Club() -> onCreateView()");
+        System.err.println(Arrays.toString(value));
+
+        ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
+
+        TextView textViewCoach = (TextView) v.findViewById(R.id.textViewCoach);
+        textViewCoach.setText(value != null ? value[0].trim() : null);
+
+        TextView textViewNGolos = (TextView) v.findViewById(R.id.textViewNGolos);
+        textViewNGolos.setText(value != null ? value[1].trim() : null);
+
+        TextView textViewFormedIn = (TextView) v.findViewById(R.id.textViewFormedIn);
+        textViewFormedIn.setText(value != null ? value[2].trim() : null);
+
         TextView textViewClubName = (TextView) v.findViewById(R.id.textViewClubName);
-        //textViewClubName.setText();
-        System.err.println("SYSTEM ERR CLUB");
-        System.err.println(value);
+        textViewClubName.setText(value != null ? value[3].trim() : null);
+
+        String id_clube = value != null ? value[4].trim() : null;
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new FantasyLeague();
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
+
         Button btnTeam = (Button) v.findViewById(R.id.btnJogadores);
         btnTeam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getFragmentManager() != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, new Player()).commit();
+                    Fragment frag = new Player();
+
+                    // SQL Query
+                    try {
+                        Bundle b = new Bundle();
+                        b.putString("player", db.getPlayer(id_clube));
+                        frag.setArguments(b);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
             }
         });
