@@ -11,6 +11,28 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradient">
 
+        <ImageView
+            android:id="@+id/goBack"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:clickable="true"
+            android:src="@drawable/ic_arrow_back"></ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="49dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:text="Fantasy League"
+            android:textAlignment="center"
+            android:textSize="26dp" />
+
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="358dp"
@@ -26,7 +48,7 @@
             android:layout_marginRight="28dp"
             android:layout_marginBottom="564dp"
             android:background="@color/white"
-            android:text="Football Club Aveiro"
+            android:text=""
             android:textColor="@color/black" />
 
         <Button

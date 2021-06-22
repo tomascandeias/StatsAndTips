@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +60,20 @@ public class StandingPT extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_standing_pt, container, false);
+        View v = inflater.inflate(R.layout.fragment_standing_pt, container, false);
+
+        ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new Leagues();
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
+
+        return v;
     }
 }

@@ -7,7 +7,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import ihc.p7.statstips.fragments.HomeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,11 +70,45 @@ public class Evento extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_evento, container, false);
-        ListView odds = (ListView) v.findViewById(R.id.listView);
 
         //1º passar da DB para ArrayList<Odd>
         //2º criar o adapter e passar o arraylist -> OddListAdapter x = new ...
         //3º
+
+        HandlerDB db = new HandlerDB();
+
+        System.err.println("Eventos() -> onCreateView()");
+
+        ListView odds = (ListView) v.findViewById(R.id.listView);
+        ArrayList<Odd> lst = new ArrayList<>();
+        try {
+            String[] query = db.getOdds().split(";");
+
+            for (int i = 0; i < query.length - 11; i+=10){
+                String nome = db.getNameByIdEquipa(query[i].trim()).split(";")[0] + " x " + db.getNameByIdEquipa(query[i+1].trim()).split(";")[0];
+                lst.add(new Odd(nome, query[i+2].trim(), query[i+3].trim(), query[i+4].trim(), query[i+5].trim(), query[i+6].trim(), query[i+7].trim(), query[i+8].trim(), query[i+9].trim()));
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        OddListViewAdapter oddAdapter = new OddListViewAdapter(Objects.requireNonNull(getContext()), lst);
+        odds.setAdapter(oddAdapter);
+
+        // Go Back Button
+        ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new HomeFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
 
         return v;
     }

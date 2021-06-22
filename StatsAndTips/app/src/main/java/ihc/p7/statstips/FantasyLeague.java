@@ -8,10 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.sql.SQLException;
 import java.util.Arrays;
+
+import ihc.p7.statstips.fragments.HomeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,7 +80,7 @@ public class FantasyLeague extends Fragment {
             @Override
             public void onClick(View v) {
                 if (getFragmentManager() != null) {
-                    Fragment frag = new Club();
+                    Fragment frag = new HomeFragment();
 
                     // SQL Query
                     try {
@@ -88,6 +91,19 @@ public class FantasyLeague extends Fragment {
                         throwables.printStackTrace();
                     }
 
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
+
+        // Go Back Button
+        ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new HomeFragment();
                     getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
             }

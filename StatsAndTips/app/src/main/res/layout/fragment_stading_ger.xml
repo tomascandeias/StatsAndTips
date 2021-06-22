@@ -11,6 +11,17 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradient">
 
+        <ImageView
+            android:id="@+id/goBack"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:clickable="true"
+            android:src="@drawable/ic_arrow_back"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="35dp"

@@ -25,6 +25,14 @@ SELECT SAT.Jogador.nome , njogos, nacionalidade, posicao, amarelos, vermelhos, S
 SELECT SAT.Jogador.nome , posicao, id_jogador, Clubeid_clube
 FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) JOIN SAT.Jogador ON id_equipa=Equipaid) WHERE id_clube='C111'
 
+--Receber NADA dar oods
+SELECT Equipaid_equipa, Equipaid_equipa2, localizacao, data_hora, vitoria, empate, derrota, vitoria_empate, total_golos, ambas_marcam 
+FROM ((SAT.Odd JOIN SAT.Jogo ON Jogoid_jogo=id_jogo) JOIN SAT.Equipa ON Equipaid_equipa=id_equipa);
+
+SELECT nome
+FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube)
+WHERE id_equipa='E177'
+
 
 
 /*SELECT * FROM SAT.Equipa
