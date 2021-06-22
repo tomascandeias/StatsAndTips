@@ -12,6 +12,24 @@
         android:background="@drawable/gradient">
 
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="261dp"
+            android:layout_height="264dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="73dp"
+            android:layout_marginLeft="73dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginRight="76dp"
+            android:layout_marginBottom="417dp"
+            android:src="@drawable/player_avatar" />
+
         <TextView
             android:id="@+id/textView16"
             android:layout_width="130dp"
@@ -22,10 +40,10 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="18dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="255dp"
-            android:layout_marginRight="255dp"
-            android:layout_marginBottom="346dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginEnd="254dp"
+            android:layout_marginRight="254dp"
+            android:layout_marginBottom="321dp"
             android:text="Games"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -39,7 +57,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="346dp"
+            android:layout_marginBottom="321dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -53,10 +71,10 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="18dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginEnd="255dp"
-            android:layout_marginRight="255dp"
-            android:layout_marginBottom="254dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginEnd="254dp"
+            android:layout_marginRight="254dp"
+            android:layout_marginBottom="229dp"
             android:text="Position"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -70,7 +88,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="296dp"
+            android:layout_marginBottom="271dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -83,7 +101,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="255dp"
+            android:layout_marginBottom="229dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -97,10 +115,10 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="18dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginEnd="258dp"
-            android:layout_marginRight="258dp"
-            android:layout_marginBottom="297dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginEnd="257dp"
+            android:layout_marginRight="257dp"
+            android:layout_marginBottom="272dp"
             android:text="Nationality"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -118,7 +136,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginEnd="254dp"
             android:layout_marginRight="254dp"
-            android:layout_marginBottom="164dp"
+            android:layout_marginBottom="139dp"
             android:text="Vermelhos"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -132,7 +150,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="167dp"
+            android:layout_marginBottom="141dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -145,7 +163,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="212dp"
+            android:layout_marginBottom="187dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -160,9 +178,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="18dp"
             android:layout_marginLeft="18dp"
-            android:layout_marginEnd="255dp"
-            android:layout_marginRight="255dp"
-            android:layout_marginBottom="211dp"
+            android:layout_marginEnd="254dp"
+            android:layout_marginRight="254dp"
+            android:layout_marginBottom="186dp"
             android:text="Amarelos"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -180,7 +198,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginEnd="257dp"
             android:layout_marginRight="257dp"
-            android:layout_marginBottom="388dp"
+            android:layout_marginBottom="363dp"
             android:text="Name"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -194,27 +212,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="387dp"
+            android:layout_marginBottom="362dp"
             android:textColor="@color/white"
             android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="234dp"
-            android:layout_height="236dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="87dp"
-            android:layout_marginLeft="87dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="87dp"
-            android:layout_marginRight="89dp"
-            android:layout_marginBottom="462dp"
-            android:src="@drawable/player_avatar" />
     </RelativeLayout>
 
 </FrameLayout>

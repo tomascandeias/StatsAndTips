@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\tomas\AppData\Local\Temp\baseline_remove_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\tomas\AppData\Local\Temp\baseline_search_24.xml" />
                                                 <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/remove/baseline_remove_24.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/search/baseline_search_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -68,7 +68,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="remove" />
+                                      <entry key="outputName" value="search_icon" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -140,6 +140,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
                                       <entry key="outputName" value="soccer_stadium" />
                                     </map>
                                   </option>
@@ -311,12 +312,22 @@
                             </entry>
                           </map>
                         </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
+                          </map>
+                        </option>
                       </PersistentState>
                     </value>
                   </entry>
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>

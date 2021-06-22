@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,6 +64,11 @@ public class Club extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_club, container, false);
 
+        String value = getArguments().getString("id_clube");
+        TextView textViewClubName = (TextView) v.findViewById(R.id.textViewClubName);
+        //textViewClubName.setText();
+        System.err.println("SYSTEM ERR CLUB");
+        System.err.println(value);
         Button btnTeam = (Button) v.findViewById(R.id.btnJogadores);
         btnTeam.setOnClickListener(new View.OnClickListener() {
             @Override

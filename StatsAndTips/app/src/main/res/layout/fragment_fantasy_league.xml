@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FantasyLeague">
 
     <RelativeLayout
@@ -10,8 +11,33 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradient">
 
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="122dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="564dp"
+            android:background="@color/white"
+            android:text="C111"
+            android:textColor="@color/black" />
 
-
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="164dp"
+            android:layout_marginLeft="164dp"
+            android:layout_marginTop="231dp"
+            android:layout_marginEnd="153dp"
+            android:layout_marginRight="153dp"
+            android:layout_marginBottom="452dp"
+            android:text="Search" />
 
     </RelativeLayout>
+
 </FrameLayout>
