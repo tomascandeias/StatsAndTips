@@ -11,7 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import ihc.p7.statstips.fragments.HomeFragment;
 //
 /**
  * A simple {@link Fragment} subclass.
@@ -75,6 +78,18 @@ public class Leagues extends Fragment {
         tvFR = (TextView) view.findViewById(R.id.frLeague);
         tvIT = (TextView) view.findViewById(R.id.itLeague);
         tvGER = (TextView) view.findViewById(R.id.gerLeague);
+
+        ImageView goBack = (ImageView) view.findViewById(R.id.goBack);
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new HomeFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
 
         return view;
     }

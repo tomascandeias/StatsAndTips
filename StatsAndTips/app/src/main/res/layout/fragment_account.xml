@@ -42,7 +42,7 @@
             android:layout_marginLeft="67dp"
             android:layout_marginBottom="375dp"
             android:drawableLeft="@android:drawable/ic_input_add"
-            android:text="Unknown Name"
+            android:text="Ambrósio"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -75,7 +75,7 @@
             android:layout_marginLeft="66dp"
             android:layout_marginBottom="312dp"
             android:drawableLeft="@android:drawable/ic_dialog_email"
-            android:text=" unknown@email.com"
+            android:text=" ambrosio@ua.pt"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

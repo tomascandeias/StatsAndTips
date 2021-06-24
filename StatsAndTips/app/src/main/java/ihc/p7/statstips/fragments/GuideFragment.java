@@ -1,6 +1,8 @@
 package ihc.p7.statstips.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +34,7 @@ public class GuideFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView textViewItem1, textViewItem2, textViewItem3;
+    private TextView textViewItem1, textViewItem2, textViewItem2_1, textViewItem3;
     private TextView textViewSubItem1, odds1, odds2, textViewSubItem3;
     private ImageView howoddswork, decimalodds;
     private View fragmentView;
@@ -77,18 +80,23 @@ public class GuideFragment extends Fragment {
             textViewSubItem1.setVisibility(View.VISIBLE);
     }
 
-    // Second guide item
+    // Second first guide item
     public void onClick2(View v) {
         if (odds1.getVisibility() == View.VISIBLE) {
             odds1.setVisibility(View.GONE);
-            odds2.setVisibility(View.GONE);
-            howoddswork.setVisibility(View.GONE);
-            decimalodds.setVisibility(View.GONE);
         } else {
             odds1.setVisibility(View.VISIBLE);
+        }
+    }
+
+    // Second second guide item
+    public void onClick2_1(View v) {
+        if (odds2.getVisibility() == View.VISIBLE) {
+            odds2.setVisibility(View.GONE);
+            howoddswork.setVisibility(View.GONE);
+        } else {
             odds2.setVisibility(View.VISIBLE);
             howoddswork.setVisibility(View.VISIBLE);
-            decimalodds.setVisibility(View.VISIBLE);
         }
     }
 
@@ -103,13 +111,13 @@ public class GuideFragment extends Fragment {
     public void resetVisibilities(){
         textViewItem1.setVisibility(View.VISIBLE);
         textViewItem2.setVisibility(View.VISIBLE);
+        textViewItem2_1.setVisibility(View.VISIBLE);
         textViewItem3.setVisibility(View.VISIBLE);
 
         textViewSubItem1.setVisibility(View.GONE);
         odds1.setVisibility(View.GONE);
         odds2.setVisibility(View.GONE);
         howoddswork.setVisibility(View.GONE);
-        decimalodds.setVisibility(View.GONE);
         textViewSubItem3.setVisibility(View.GONE);
     }
 
@@ -122,12 +130,12 @@ public class GuideFragment extends Fragment {
 
         textViewItem1 = (TextView) view.findViewById(R.id.textViewItem1);
         textViewItem2 = (TextView) view.findViewById(R.id.textViewItem2);
+        textViewItem2_1 = (TextView) view.findViewById(R.id.textViewItem2_1);
         textViewItem3 = (TextView) view.findViewById(R.id.textViewItem3);
         textViewSubItem1 = (TextView) view.findViewById(R.id.textViewSubItem1);
         odds1 = (TextView) view.findViewById(R.id.odds1);
         howoddswork = view.findViewById(R.id.howoddswork);
         odds2 = (TextView) view.findViewById(R.id.odds2);
-        decimalodds = view.findViewById(R.id.decimalodds);
         textViewSubItem3 = (TextView) view.findViewById(R.id.textViewSubItem3);
 
         resetVisibilities();
@@ -151,6 +159,12 @@ public class GuideFragment extends Fragment {
             @Override
             public void onClick(View v){
                 onClick2(v);
+            }
+        });
+        textViewItem2_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick2_1(v);
             }
         });
         textViewItem3.setOnClickListener(new View.OnClickListener(){

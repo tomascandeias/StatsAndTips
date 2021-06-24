@@ -31,35 +31,6 @@ public class HomePage extends AppCompatActivity {
 
         // To start with HomeFragment()
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, new HomeFragment()).commit();
-        /*circleMenu = findViewById(R.id.circleMenu);//314755
-
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.drawable.add, R.drawable.remove)
-                .addSubMenu(Color.parseColor("#CDCDCD"), R.drawable.star)
-                .addSubMenu(Color.parseColor("#CDCDCD"), R.drawable.standings)
-                .addSubMenu(Color.parseColor("#CDCDCD"), R.drawable.look_up)
-                .setOnMenuSelectedListener(new OnMenuSelectedListener() {
-                    @Override
-                    public void onMenuSelected(int index) {
-                        //Toast.makeText(getApplicationContext(), "Options= " + names[index], Toast.LENGTH_SHORT).show();
-                        Fragment selected=null;
-                        switch (index){
-                            case 0: //Recommended Events
-                                startActivity(new Intent(HomePage.this, Evento.class));
-                                break;
-                            case 1: //Standings
-                                //startActivity(new Intent(HomePage.this, Leagues.class));
-                                selected = new Leagues();
-                                break;
-                            case 2: //Teams
-                                startActivity(new Intent(HomePage.this, StandingPT.class));
-                                break;
-                            default:
-                                Toast.makeText(getApplicationContext(), "Invalid option", Toast.LENGTH_SHORT).show();
-                                break;
-                        }
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, selected).commit();
-                    }
-                });*/
 
 
         Button btnEventos = (Button) findViewById(R.id.btnEventos);
@@ -67,6 +38,9 @@ public class HomePage extends AppCompatActivity {
 
         Button btnStanding = (Button) findViewById(R.id.btnStanding);
         btnStanding.setOnClickListener(this::onClick);
+
+        Button btnBD = (Button) findViewById(R.id.btnBD);
+        btnBD.setOnClickListener(this::onClick);
 
     }
 
@@ -82,13 +56,12 @@ public class HomePage extends AppCompatActivity {
                 fragment = new Leagues();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, fragment).commit();
                 break;
+
+            case R.id.btnBD:
+                fragment = new FantasyLeague();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_navbar, fragment).commit();
+                break;
         }
-    }
-
-    public void replaceFragment(Fragment someFragment) {
-
-
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navbarListener = item -> {
