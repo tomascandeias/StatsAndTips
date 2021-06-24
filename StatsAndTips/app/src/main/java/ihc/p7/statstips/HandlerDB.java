@@ -1,5 +1,6 @@
 package ihc.p7.statstips;
 
+import android.os.Build;
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -58,13 +59,12 @@ public class HandlerDB {
 		Statement statement = this.conn.createStatement();
 
 		// Create and execute a SELECT SQL statement.
-		String selectSql = String.format("SELECT treinador, ngolos, nome, data_fundacao, id_clube " +
-											"FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube) WHERE nome=\'%s\'", nome);
+		String selectSql = String.format("EXEC SAT.Get_Clube_byName \'%s\'", nome);
 		ResultSet rs = statement.executeQuery(selectSql);
 
 		StringBuilder ret = new StringBuilder();
 		while(rs.next()){
-			// treinador; ngolos; nome, data_fundacao
+			// treinador; ngolos; nome, data_fundacao, id_clube
 			ret.append(rs.getString(1) + ";"
 					+ rs.getString(2) + ";"
 					+ rs.getString(3) + ";"
@@ -162,6 +162,23 @@ public class HandlerDB {
 
 		return ret.toString();
 
+	}
+
+	public String getClubes() throws SQLException {
+		Statement statement = this.conn.createStatement();
+
+		// Create and execute a SELECT SQL statement.
+		String selectSql = String.format("EXEC SAT.List_Clubs");
+		ResultSet rs = statement.executeQuery(selectSql);
+
+		StringBuilder ret = new StringBuilder();
+		while(rs.next()){
+			// id_clube, nome
+			ret.append(rs.getString(1) + ";"
+					+ rs.getString(2) + ";\n");
+		}
+
+		return ret.toString();
 	}
 
 	public String getNameByIdEquipa(String id_equipa) throws SQLException {

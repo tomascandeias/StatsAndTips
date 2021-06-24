@@ -58,7 +58,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewGamesVal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewNationalityVal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewPositionVal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewVermelhosVal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewAmarelosVal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -214,18 +214,30 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewNameVal"
-            android:layout_width="250dp"
+            android:layout_width="257dp"
+            android:layout_height="29dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="361dp"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="127dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_marginBottom="362dp"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:layout_marginEnd="151dp"
+            android:layout_marginRight="151dp"
+            android:layout_marginBottom="77dp"
+            android:text="Edit" />
     </RelativeLayout>
 
 </FrameLayout>

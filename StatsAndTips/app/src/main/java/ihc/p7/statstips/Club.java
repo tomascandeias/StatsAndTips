@@ -83,10 +83,10 @@ public class Club extends Fragment {
         textViewNGolos.setText(value != null ? value[1].trim() : null);
 
         TextView textViewFormedIn = (TextView) v.findViewById(R.id.textViewFormedIn);
-        textViewFormedIn.setText(value != null ? value[2].trim() : null);
+        textViewFormedIn.setText(value != null ? value[3].trim() : null);
 
         TextView textViewClubName = (TextView) v.findViewById(R.id.textViewClubName);
-        textViewClubName.setText(value != null ? value[3].trim() : null);
+        textViewClubName.setText(value != null ? value[2].trim() : null);
 
         String id_clube = value != null ? value[4].trim() : null;
 

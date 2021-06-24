@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +30,8 @@ public class PlayerPage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    int mode = 0; // no edit mode
 
     public PlayerPage() {
         // Required empty public constructor
@@ -75,23 +79,29 @@ public class PlayerPage extends Fragment {
 
         ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
 
-        TextView textViewNameVal = (TextView) v.findViewById(R.id.textViewNameVal);
+        EditText textViewNameVal = (EditText) v.findViewById(R.id.textViewNameVal);
         textViewNameVal.setText(value != null ? value[0].trim() : null);
-        
-        TextView textViewGamesVal = (TextView) v.findViewById(R.id.textViewGamesVal);
+        textViewNameVal.setFocusable(false);
+
+        EditText textViewGamesVal = (EditText) v.findViewById(R.id.textViewGamesVal);
         textViewGamesVal.setText(value != null ? value[1].trim() : null);
-        
-        TextView textViewNationalityVal = (TextView) v.findViewById(R.id.textViewNationalityVal);
+        textViewGamesVal.setFocusable(false);
+
+        EditText textViewNationalityVal = (EditText) v.findViewById(R.id.textViewNationalityVal);
         textViewNationalityVal.setText(value != null ? value[2].trim() : null);
-        
-        TextView textViewPositionVal = (TextView) v.findViewById(R.id.textViewPositionVal);
+        textViewNationalityVal.setFocusable(false);
+
+        EditText textViewPositionVal = (EditText) v.findViewById(R.id.textViewPositionVal);
         textViewPositionVal.setText(value != null ? value[3].trim() : null);
-        
-        TextView textViewAmarelosVal = (TextView) v.findViewById(R.id.textViewAmarelosVal);
+        textViewPositionVal.setFocusable(false);
+
+        EditText textViewAmarelosVal = (EditText) v.findViewById(R.id.textViewAmarelosVal);
         textViewAmarelosVal.setText(value != null ? value[4].trim() : null);
-        
-        TextView textViewVermelhosVal = (TextView) v.findViewById(R.id.textViewVermelhosVal);
+        textViewAmarelosVal.setFocusable(false);
+
+        EditText textViewVermelhosVal = (EditText) v.findViewById(R.id.textViewVermelhosVal);
         textViewVermelhosVal.setText(value != null ? value[5].trim() : null);
+        textViewVermelhosVal.setFocusable(false);
         
         String id_clube = value != null ? value[6].trim() : null;
 
@@ -112,6 +122,26 @@ public class PlayerPage extends Fragment {
 
                     getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
+            }
+        });
+
+        Button btnEdit = (Button) v.findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mode == 0) {
+                    textViewNameVal.setFocusableInTouchMode(true);
+                    textViewNationalityVal.setFocusableInTouchMode(true);
+                    btnEdit.setText("Save changes");
+                }
+
+
+
+
+                //UPDATE TO DB
+
+
+                mode++;
             }
         });
 
