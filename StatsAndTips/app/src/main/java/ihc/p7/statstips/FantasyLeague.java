@@ -1,18 +1,28 @@
 package ihc.p7.statstips;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import ihc.p7.statstips.fragments.HomeFragment;
 
@@ -31,6 +41,11 @@ public class FantasyLeague extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView club1, club2, club3, club4, club5;
+    List<List<String>> clubes = new ArrayList<>();
+    static int idx = 0;
+    ListView lv;
 
     public FantasyLeague() {
         // Required empty public constructor
@@ -63,6 +78,7 @@ public class FantasyLeague extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,8 +89,24 @@ public class FantasyLeague extends Fragment {
 
         System.err.println("FantasyLeague() -> onCreateView()");
 
-        TextView text = (TextView) v.findViewById(R.id.searchEditText);
 
+
+        try {
+            String[] values = db.getClubes().split(";");
+
+            for (int i = 0; i< values.length - 2; i+=2) {
+                clubes.add(new ArrayList<>());
+                clubes.get(clubes.size()-1).add(values[i].trim()); //id_clube
+                clubes.get(clubes.size()-1).add(values[i+1].trim()); //nome
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        // Search box
+        EditText text = (EditText) v.findViewById(R.id.searchEditText);
+
+        // Search Clube
         Button btnSearch = (Button) v.findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,19 +114,45 @@ public class FantasyLeague extends Fragment {
                 if (getFragmentManager() != null) {
                     Fragment frag = new Club();
 
-                    // SQL Query
-                    try {
-                        Bundle b = new Bundle();
-                        b.putString("club", db.getClubeByNome(text.getText().toString()));
-                        frag.setArguments(b);
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
+                    searchClubQuery(db, frag, text);
 
                     getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
             }
         });
+
+
+        // List View de Clubes
+        lv = (ListView) v.findViewById(R.id.listViewClubes);
+        List<String> nomes_clubes = new ArrayList<>();
+        clubes.forEach(lst -> nomes_clubes.add(lst.get(1)));
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, nomes_clubes) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                // Get the Item from ListView
+                View view = super.getView(position, convertView, parent);
+
+                // Initialize a TextView for ListView each Item
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                // Set the text color of TextView (ListView Item)
+                tv.setTextColor(Color.WHITE);
+
+                // Generate ListView Item using TextView
+                return view;
+            }
+        };
+        lv.setAdapter(arrayAdapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                text.setText(nomes_clubes.get(position));
+                btnSearch.performClick();
+            }
+        });
+
+
+
 
         // Go Back Button
         ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
@@ -110,5 +168,16 @@ public class FantasyLeague extends Fragment {
         });
 
         return v;
+    }
+
+    public void searchClubQuery(HandlerDB db, Fragment frag, EditText text){
+        // SQL Query
+        try {
+            Bundle b = new Bundle();
+            b.putString("club", db.getClubeByNome(text.getText().toString()));
+            frag.setArguments(b);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

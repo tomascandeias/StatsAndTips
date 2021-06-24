@@ -164,6 +164,23 @@ public class HandlerDB {
 
 	}
 
+	public String getClubes() throws SQLException {
+		Statement statement = this.conn.createStatement();
+
+		// Create and execute a SELECT SQL statement.
+		String selectSql = String.format("EXEC SAT.List_Clubs");
+		ResultSet rs = statement.executeQuery(selectSql);
+
+		StringBuilder ret = new StringBuilder();
+		while(rs.next()){
+			// id_clube, nome
+			ret.append(rs.getString(1) + ";"
+					+ rs.getString(2) + ";\n");
+		}
+
+		return ret.toString();
+	}
+
 	public String getNameByIdEquipa(String id_equipa) throws SQLException {
 		Statement statement = this.conn.createStatement();
 
