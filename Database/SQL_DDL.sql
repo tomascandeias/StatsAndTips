@@ -1,6 +1,9 @@
 CREATE SCHEMA SAT
 GO
 
+
+-- Tabelas
+
 CREATE TABLE SAT.Equipa (
   id_equipa varchar(10) NOT NULL, 
   treinador varchar(255) NULL, 
@@ -106,6 +109,8 @@ CREATE TABLE SAT.Equipa_Cliente (
   PRIMARY KEY (client_id, equipa_id)
 );
 
+-- Integridade
+
 ALTER TABLE SAT.Jogador ADD CONSTRAINT FKJogadoreEquipaid FOREIGN KEY (Equipaid) REFERENCES SAT.Equipa (id_equipa);
 
 ALTER TABLE SAT.Equipa ADD CONSTRAINT FKEquipa401218 FOREIGN KEY (Clubeid_clube) REFERENCES SAT.Clube (id_clube);
@@ -137,17 +142,59 @@ ALTER TABLE SAT.Equipa_Cliente ADD CONSTRAINT FKEquipaCliente001 FOREIGN KEY(cli
 ALTER TABLE SAT.Equipa_Cliente ADD CONSTRAINT FKEquipaCliente002 FOREIGN KEY(equipa_id) REFERENCES SAT.Equipa (id_equipa)
 
 
-/*DROP TABLE SAT.Clube
-DROP TABLE SAT.Equipa
-DROP TABLE SAT.Jogador
-DROP TABLE SAT.Jogo
-DROP TABLE SAT.Odd
-DROP TABLE SAT.Registo
-DROP TABLE SAT.Arbitro
-DROP TABLE SAT.Equipa_Competicao
-DROP TABLE SAT.Competicao
-DROP TABLE SAT.Liga
-DROP TABLE SAT.Taca 
-DROP TABLE SAT.Jogador_Jogo*/
+-- INDEXAÇÂO
+CREATE INDEX ixJogadorNome ON SAT.Jogador(nome, Equipaid)
+CREATE INDEX ixEquipaClube ON SAT.Equipa(id_equipa, Clubeid_clube)
+CREATE INDEX ixJogoEquipas ON SAT.Jogo(id_jogo, Equipaid_equipa, Equipaid_equipa2)
 
+-- VIEWS
+GO
+CREATE VIEW ClienteView AS 
+SELECT nome, email FROM SAT.Cliente
+WHERE nome != 'Admin'
+GO
 
+CREATE VIEW ClubView AS 
+SELECT nome, data_fundacao, treinador, ngolos FROM (SAT.Clube JOIN SAT.Equipa ON Clubeid_clube=id_clube)
+GO
+
+-- Store Procedure
+
+CREATE PROCEDURE SAT.Get_Clubes
+AS  
+    SELECT id_clube ,nome FROM SAT.Clube
+GO
+
+CREATE PROCEDURE SAT.Get_Equipas @Clube_id VARCHAR(10) = NULL 
+AS  
+    IF @Clube_id IS NULL
+    BEGIN
+        PRINT 'Club ID required!'
+        RETURN
+    END
+
+    SELECT treinador, ngolos, nome, data_fundacao 
+    FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube)
+    WHERE id_clube=@Clube_id
+    ORDER BY data_fundacao
+
+GO
+CREATE PROCEDURE SAT.Get_Clubes
+AS  
+    SELECT id_clube ,nome FROM SAT.Clube
+GO
+
+CREATE PROCEDURE SAT.Get_Jogador @Jogador_id VARCHAR(10) = NULL
+AS
+    IF @Jogador_id IS NULL
+    BEGIN
+        PRINT 'Jogador ID is required!'
+        RETURN
+    END
+    SELECT SAT.Jogador.nome , amarelos, vermelhos, njogos AS 'numero de jogos', nacionalidade, posicao AS 'Posição', SAT.Clube.nome AS 'Clube'
+    FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) 
+        JOIN SAT.Jogador ON Equipaid=id_equipa)
+    WHERE id_jogador=@Jogador_id;
+GO
+
+DROP 
