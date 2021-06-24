@@ -12,11 +12,10 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class HandlerDB {
-	private String db_url = "jdbc:jtds:sqlserver://mednat.ieeta.pt:8101";
-	private String username = "p9g2";
-	private String password = "BD@1712193931";
+	private final String db_url = "jdbc:jtds:sqlserver://mednat.ieeta.pt:8101";
+	private final String username = "p9g2";
+	private final String password = "BD@1712193931";
 	private Connection conn = null;
-	private String  ConnectionResult;
 
 	public HandlerDB() {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -78,13 +77,12 @@ public class HandlerDB {
 		Statement statement = this.conn.createStatement();
 
 		// Create and execute a SELECT SQL statement.
-		String selectSql = String.format("SELECT treinador, ngolos, nome, data_fundacao, id_clube " +
-											"FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube) WHERE id_clube=\'%s\'", id_clube);
+		String selectSql = String.format("EXEC SAT.Get_Clube_ID %s", id_clube);
 		ResultSet rs = statement.executeQuery(selectSql);
 
 		StringBuilder ret = new StringBuilder();
 		while(rs.next()){
-			// treinador; ngolos; nome, data_fundacao
+			// treinador; ngolos; nome, data_fundacao, id_clube
 			ret.append(rs.getString(1) + ";"
 					+ rs.getString(2) + ";"
 					+ rs.getString(3) + ";"
@@ -98,8 +96,7 @@ public class HandlerDB {
 		Statement statement = this.conn.createStatement();
 
 		// Create and execute a SELECT SQL statement.
-		String selectSql = String.format("SELECT SAT.Jogador.nome , posicao, id_jogador, Clubeid_clube " +
-											"FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) JOIN SAT.Jogador ON id_equipa=Equipaid) WHERE id_clube=\'%s\'", id_clube);
+		String selectSql = String.format("EXEC SAT.Get_Jogador_Of_Club %s", id_clube);
 		ResultSet rs = statement.executeQuery(selectSql);
 
 		StringBuilder ret = new StringBuilder();
@@ -118,8 +115,7 @@ public class HandlerDB {
 		Statement statement = this.conn.createStatement();
 
 		// Create and execute a SELECT SQL statement.
-		String selectSql = String.format("SELECT SAT.Jogador.nome , njogos, nacionalidade, posicao, amarelos, vermelhos, SAT.Clube.id_clube " +
-											"FROM ((SAT.Clube JOIN SAT.Equipa ON id_clube=Clubeid_clube) JOIN SAT.Jogador ON id_equipa=Equipaid) WHERE SAT.Jogador.id_jogador=\'%s\';", id_jogador);
+		String selectSql = String.format("EXEC SAT.Get_Jogador %s", id_jogador);
 		ResultSet rs = statement.executeQuery(selectSql);
 
 		StringBuilder ret = new StringBuilder();
@@ -141,13 +137,12 @@ public class HandlerDB {
 		Statement statement = this.conn.createStatement();
 
 		// Create and execute a SELECT SQL statement.
-		String selectSql = String.format("SELECT Equipaid_equipa, Equipaid_equipa2, localizacao, data_hora, vitoria, empate, derrota, vitoria_empate, total_golos, ambas_marcam \n" +
-											"FROM ((SAT.Odd JOIN SAT.Jogo ON Jogoid_jogo=id_jogo) JOIN SAT.Equipa ON Equipaid_equipa=id_equipa);");
+		String selectSql = String.format("EXEC SAT.List_ODDS");
 		ResultSet rs = statement.executeQuery(selectSql);
 
 		StringBuilder ret = new StringBuilder();
 		while(rs.next()){
-			// equipa1, equipa2, win, draw, loss, win or draw, total goals, both score
+			// equipa1, equipa2, local, data_hora, win, draw, loss, win or draw, total goals, both score
 			ret.append(rs.getString(1) + ";"
 					+ rs.getString(2) + ";"
 					+ rs.getString(3) + ";"
@@ -185,7 +180,7 @@ public class HandlerDB {
 		Statement statement = this.conn.createStatement();
 
 		// Create and execute a SELECT SQL statement.
-		String selectSql = String.format("SELECT nome FROM (SAT.Equipa JOIN SAT.Clube ON Clubeid_clube=id_clube) WHERE id_equipa=\'%s\';", id_equipa);
+		String selectSql = String.format("EXEC SAT.Get_TeamName_byID %s", id_equipa);
 		ResultSet rs = statement.executeQuery(selectSql);
 
 		StringBuilder ret = new StringBuilder();
