@@ -44,8 +44,10 @@ public class FantasyLeague extends Fragment {
 
     TextView club1, club2, club3, club4, club5;
     List<List<String>> clubes = new ArrayList<>();
-    static int idx = 0;
-    ListView lv;
+    List<List<String>> jogadores = new ArrayList<>();
+    ListView lv, lvPlayer;
+    static int mode = 0; //0=teams, 1=players
+    TextView teams_players;
 
     public FantasyLeague() {
         // Required empty public constructor
@@ -89,8 +91,7 @@ public class FantasyLeague extends Fragment {
 
         System.err.println("FantasyLeague() -> onCreateView()");
 
-
-
+        //Save {id_clube, name}
         try {
             String[] values = db.getClubes().split(";");
 
@@ -103,8 +104,23 @@ public class FantasyLeague extends Fragment {
             throwables.printStackTrace();
         }
 
+        //Save {id_jogador, name}
+        try {
+            String[] values = db.getPlayers().split(";");
+
+            for (int i = 0; i< values.length - 2; i+=2) {
+                jogadores.add(new ArrayList<>());
+                jogadores.get(jogadores.size()-1).add(values[i].trim()); //id_jogador
+                jogadores.get(jogadores.size()-1).add(values[i+1].trim()); //nome
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         // Search box
         EditText text = (EditText) v.findViewById(R.id.searchEditText);
+
+
 
         // Search Clube
         Button btnSearch = (Button) v.findViewById(R.id.btnSearch);
@@ -121,37 +137,99 @@ public class FantasyLeague extends Fragment {
             }
         });
 
-
-        // List View de Clubes
+        // List View de Clubes/Players
         lv = (ListView) v.findViewById(R.id.listViewClubes);
+
         List<String> nomes_clubes = new ArrayList<>();
         clubes.forEach(lst -> nomes_clubes.add(lst.get(1)));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, nomes_clubes) {
+
+        List<String> nomes_players = new ArrayList<>();
+        jogadores.forEach(lst -> nomes_players.add(lst.get(1)));
+
+        //Team and Players List
+        teams_players = (TextView) v.findViewById(R.id.teams_players);
+        teams_players.setOnClickListener(new View.OnClickListener() {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent){
-                // Get the Item from ListView
-                View view = super.getView(position, convertView, parent);
+            public void onClick(View v) {
+                List<String> lst = new ArrayList<>();
+                if (mode == 0){
+                    lst = nomes_clubes;
+                    teams_players.setText("Teams");
+                    mode = 1;
+                }else if (mode == 1){
+                    lst = nomes_players;
+                    teams_players.setText("Players");
+                    mode = 0;
+                }
 
-                // Initialize a TextView for ListView each Item
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, lst) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent){
+                        // Get the Item from ListView
+                        View view = super.getView(position, convertView, parent);
 
-                // Set the text color of TextView (ListView Item)
-                tv.setTextColor(Color.WHITE);
+                        // Initialize a TextView for ListView each Item
+                        TextView tv = (TextView) view.findViewById(android.R.id.text1);
 
-                // Generate ListView Item using TextView
-                return view;
-            }
-        };
-        lv.setAdapter(arrayAdapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                text.setText(nomes_clubes.get(position));
-                btnSearch.performClick();
+                        // Set the text color of TextView (ListView Item)
+                        tv.setTextColor(Color.WHITE);
+
+                        // Generate ListView Item using TextView
+                        return view;
+                    }
+                };
+                lv.setAdapter(arrayAdapter);
+                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        if (mode == 1) {
+                            text.setText(nomes_clubes.get(position));
+                            btnSearch.performClick();
+                        }else if (mode == 0){
+                            if (getFragmentManager() != null) {
+                                Fragment frag = new PlayerPage();
+                                String id_jogador = "";
+                                String nome_jogador = parent.getItemAtPosition(position).toString().trim();
+                                for(List<String> j : jogadores){
+                                    if (j.get(1).equals(nome_jogador)) {
+                                        id_jogador = j.get(0);
+                                        System.err.printf("ENCONTRADO: %s,%s", id_jogador, j.get(1));
+                                        break;
+                                    }
+                                }
+                                try {
+                                    Bundle b = new Bundle();
+                                    b.putString("player_page", db.getPlayerPage(id_jogador));
+                                    frag.setArguments(b);
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                }
+                                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                            }
+
+                        }
+                    }
+                });
             }
         });
 
+        teams_players.performClick(); //show teams
 
+
+
+
+
+
+        Button btnAddClube = (Button) v.findViewById(R.id.btnAddClube);
+        btnAddClube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new AddClube();
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
 
 
         // Go Back Button

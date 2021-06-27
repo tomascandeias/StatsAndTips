@@ -1,5 +1,6 @@
 package ihc.p7.statstips;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,12 +8,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -33,6 +39,7 @@ public class Player extends Fragment {
     private String mParam2;
 
     HandlerDB db = null;
+    ListView lv;
 
     public Player() {
         // Required empty public constructor
@@ -80,21 +87,13 @@ public class Player extends Fragment {
 
         ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
 
-        TextView textViewGRVal = (TextView) v.findViewById(R.id.textViewGRVal);
-        TextView textViewDEFVal1 = (TextView) v.findViewById(R.id.textViewDEFVal1);
-        TextView textViewDEFVal2 = (TextView) v.findViewById(R.id.textViewDEFVal2);
-        TextView textViewDEFVal3 = (TextView) v.findViewById(R.id.textViewDEFVal3);
-        TextView textViewDEFVal4 = (TextView) v.findViewById(R.id.textViewDEFVal4);
-        TextView textViewMEDVal1 = (TextView) v.findViewById(R.id.textViewMEDVal1);
-        TextView textViewMEDVal2 = (TextView) v.findViewById(R.id.textViewMEDVal2);
-        TextView textViewMEDVal3 = (TextView) v.findViewById(R.id.textViewMEDVal3);
-        TextView textViewMEDVal4 = (TextView) v.findViewById(R.id.textViewMEDVal4);
-        TextView textViewAVVal = (TextView) v.findViewById(R.id.textViewAVVal);
-        TextView textViewAVVal2 = (TextView) v.findViewById(R.id.textViewAVVal2);
+        // List View de Clubes/Players
+        lv = (ListView) v.findViewById(R.id.listViewClubes);
 
-        Map<String, String> id_jogadores = new HashMap<>();
+        List<String> nomes = new ArrayList<>();
 
-        int def = 0, med = 0, av = 0;
+        Map<Integer, String> jogadores = new HashMap<>();
+
         String id_clube = null;
         for (int i = 0; i < Objects.requireNonNull(value).length - 4; i+=4){
             //i:nome, i+1:posicao, i+2:id_jogador, i+3:id_clube
@@ -102,85 +101,45 @@ public class Player extends Fragment {
             value[i+1] = value[i+1].trim();
             value[i+2] = value[i+2].trim();
             id_clube = value[i+3].trim();
-
-            switch (value[i+1].trim()){
-                case "GR":
-                    textViewGRVal.setText(value[i].trim());
-                    id_jogadores.put("GR", value[i+2]);
-                    break;
-                case "DEF":
-                    switch (def){
-                        case 0:
-                            textViewDEFVal1.setText(value[i].trim());
-                            id_jogadores.put("DEF1", value[i+2]);
-                            def++;
-                            break;
-                        case 1:
-                            textViewDEFVal2.setText(value[i].trim());
-                            id_jogadores.put("DEF2", value[i+2]);
-                            def++;
-                            break;
-                        case 2:
-                            textViewDEFVal3.setText(value[i].trim());
-                            id_jogadores.put("DEF3", value[i+2]);
-                            def++;
-                            break;
-                        case 3:
-                            textViewDEFVal4.setText(value[i].trim());
-                            id_jogadores.put("DEF4", value[i+2]);
-                            def++;
-                            break;
-                        default:
-                            System.err.println("Erro: fill [DEF] Player()");
-                    }
-                    break;
-                case "MED":
-                    switch (med) {
-                        case 0:
-                            textViewMEDVal1.setText(value[i].trim());
-                            id_jogadores.put("MED1", value[i+2]);
-                            med++;
-                            break;
-                        case 1:
-                            textViewMEDVal2.setText(value[i].trim());
-                            id_jogadores.put("MED2", value[i+2]);
-                            med++;
-                            break;
-                        case 2:
-                            textViewMEDVal3.setText(value[i].trim());
-                            id_jogadores.put("MED3", value[i+2]);
-                            med++;
-                            break;
-                        case 3:
-                            textViewMEDVal4.setText(value[i].trim());
-                            id_jogadores.put("MED4", value[i+2]);
-                            med++;
-                            break;
-                        default:
-                            System.err.println("Erro: fill [MED] Player()");
-                    }
-                    break;
-                case "AV":
-                    switch (av) {
-                        case 0:
-                            textViewAVVal.setText(value[i].trim());
-                            id_jogadores.put("AV1", value[i+2]);
-                            av++;
-                            break;
-                        case 1:
-                            textViewAVVal2.setText(value[i].trim());
-                            id_jogadores.put("AV2", value[i+2]);
-                            av++;
-                            break;
-                        default:
-                            System.err.println("Erro: fill [AV]] Player()");
-                    }
-                    break;
-                default:
-                    System.err.printf("Erro: fill [pos=%s] Player()\n", value[i+1]);
-            }
+            jogadores.put(i, String.format("%s,%s", value[i], value[i+2]));
+            nomes.add(value[i]);
 
         }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, nomes) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                // Get the Item from ListView
+                View view = super.getView(position, convertView, parent);
+
+                // Initialize a TextView for ListView each Item
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                // Set the text color of TextView (ListView Item)
+                tv.setTextColor(Color.WHITE);
+
+                // Generate ListView Item using TextView
+                return view;
+            }
+        };
+        lv.setAdapter(arrayAdapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (getFragmentManager() != null) {
+                    Fragment frag = new PlayerPage();
+                    String id_jogador = Objects.requireNonNull(jogadores.get(position)).split(",")[1];
+                    try {
+                        Bundle b = new Bundle();
+                        b.putString("player_page", db.getPlayerPage(id_jogador));
+                        frag.setArguments(b);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                    getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
+                }
+            }
+        });
 
         // GO BACK button
         String finalId_clube = id_clube;
@@ -201,72 +160,6 @@ public class Player extends Fragment {
 
                     getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
-            }
-        });
-
-        textViewGRVal.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("GR"))).commit();
-            }
-        });
-
-        textViewDEFVal1.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("DEF1"))).commit();
-            }
-        });
-
-        textViewDEFVal2.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("DEF2"))).commit();
-            }
-        });
-
-        textViewDEFVal3.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("DEF3"))).commit();
-            }
-        });
-
-        textViewDEFVal4.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("DEF4"))).commit();
-            }
-        });
-
-        textViewMEDVal1.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("MED1"))).commit();
-            }
-        });
-
-        textViewMEDVal2.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("MED2"))).commit();
-            }
-        });
-
-        textViewMEDVal3.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("MED3"))).commit();
-            }
-        });
-
-        textViewMEDVal4.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("MED4"))).commit();
-            }
-        });
-
-        textViewAVVal.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("AV1"))).commit();
-            }
-        });
-
-        textViewAVVal2.setOnClickListener(v1 -> {
-            if (getFragmentManager() != null) {
-                getFragmentManager().beginTransaction().replace(R.id.fl_navbar, getPlayerPageWithQuery(id_jogadores.get("AV2"))).commit();
             }
         });
 

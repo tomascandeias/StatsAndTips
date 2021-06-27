@@ -79,29 +79,23 @@ public class PlayerPage extends Fragment {
 
         ImageView goBack = (ImageView) v.findViewById(R.id.goBack);
 
-        EditText textViewNameVal = (EditText) v.findViewById(R.id.textViewNameVal);
+        TextView textViewNameVal = (TextView) v.findViewById(R.id.textViewNameVal);
         textViewNameVal.setText(value != null ? value[0].trim() : null);
-        textViewNameVal.setFocusable(false);
 
-        EditText textViewGamesVal = (EditText) v.findViewById(R.id.textViewGamesVal);
+        TextView textViewGamesVal = (TextView) v.findViewById(R.id.textViewGamesVal);
         textViewGamesVal.setText(value != null ? value[1].trim() : null);
-        textViewGamesVal.setFocusable(false);
 
-        EditText textViewNationalityVal = (EditText) v.findViewById(R.id.textViewNationalityVal);
+        TextView textViewNationalityVal = (TextView) v.findViewById(R.id.textViewNationalityVal);
         textViewNationalityVal.setText(value != null ? value[2].trim() : null);
-        textViewNationalityVal.setFocusable(false);
 
-        EditText textViewPositionVal = (EditText) v.findViewById(R.id.textViewPositionVal);
+        TextView textViewPositionVal = (TextView) v.findViewById(R.id.textViewPositionVal);
         textViewPositionVal.setText(value != null ? value[3].trim() : null);
-        textViewPositionVal.setFocusable(false);
 
-        EditText textViewAmarelosVal = (EditText) v.findViewById(R.id.textViewAmarelosVal);
+        TextView textViewAmarelosVal = (TextView) v.findViewById(R.id.textViewAmarelosVal);
         textViewAmarelosVal.setText(value != null ? value[4].trim() : null);
-        textViewAmarelosVal.setFocusable(false);
 
-        EditText textViewVermelhosVal = (EditText) v.findViewById(R.id.textViewVermelhosVal);
+        TextView textViewVermelhosVal = (TextView) v.findViewById(R.id.textViewVermelhosVal);
         textViewVermelhosVal.setText(value != null ? value[5].trim() : null);
-        textViewVermelhosVal.setFocusable(false);
         
         String id_clube = value != null ? value[6].trim() : null;
 
@@ -122,26 +116,6 @@ public class PlayerPage extends Fragment {
 
                     getFragmentManager().beginTransaction().replace(R.id.fl_navbar, frag).commit();
                 }
-            }
-        });
-
-        Button btnEdit = (Button) v.findViewById(R.id.btnEdit);
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mode == 0) {
-                    textViewNameVal.setFocusableInTouchMode(true);
-                    textViewNationalityVal.setFocusableInTouchMode(true);
-                    btnEdit.setText("Save changes");
-                }
-
-
-
-
-                //UPDATE TO DB
-
-
-                mode++;
             }
         });
 
